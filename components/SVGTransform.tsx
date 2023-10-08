@@ -24,7 +24,7 @@ export default function SVGs(props: { pathIndex: number }) {
   useEffect(() => {
     // This useEffect gets triggered each time the pathIndex changes (which is each time a new section is scrolled to on the homepage)
     const animation = animate(progress, props.pathIndex, {
-      duration: 0.5,
+      duration: 0.3,
       ease: 'linear',
     });
 
