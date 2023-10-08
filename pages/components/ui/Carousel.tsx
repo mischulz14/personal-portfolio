@@ -1,4 +1,4 @@
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'heroicons-react';
 import React, { useState } from 'react';
 

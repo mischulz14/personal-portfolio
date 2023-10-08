@@ -2,7 +2,7 @@ import Carousel from '../ui/Carousel';
 import ProjectCard from '../ui/ProjectCard';
 
 export default function Projects() {
-  const projectsArray = projects.map((project) => (
+  const projectsArray = getProjects().map((project) => (
     <ProjectCard
       title={project.title}
       description={project.description}
@@ -94,3 +94,7 @@ const projects = [
     logoSrc: '/origame.svg',
   },
 ];
+
+function getProjects() {
+  return projects;
+}
