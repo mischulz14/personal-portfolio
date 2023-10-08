@@ -29,7 +29,7 @@ const Hero = () => {
             transform="translate(100 100)"
           />
         </svg>
-        <Image
+        <img
           width={250}
           height={250}
           alt="profile"
