@@ -7,8 +7,14 @@ import {
 } from 'framer-motion';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
-import { getIndex, useFlubber } from '../hooks/useFlubber';
-import { about, contact, hero, projects, techstack } from '../svg/paths';
+import { getIndex, useFlubber } from '../../utils/hooks/useFlubber';
+import {
+  about,
+  contact,
+  hero,
+  projects,
+  techstack,
+} from '../../utils/svg/paths';
 
 const paths = [hero, about, techstack, projects, contact];
 const colors = ['#fff', '#fff', '#fff', '#fff', '#fff'];
