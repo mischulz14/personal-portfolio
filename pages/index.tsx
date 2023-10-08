@@ -11,6 +11,9 @@ export default function Page() {
   const projectImagePaths = projects.map((project) => project.logoSrc);
   const techStackImagePaths = techStackImages.map((image) => image.src);
 
+  /**
+   * This useEffect is used to preload all the images that are used in the website. This is done so that the images are loaded before the website is rendered. I hate when you can see how an image gets rendered on the page ... it's just ugly.
+   */
   useEffect(() => {
     const imagePaths = [
       ...projectImagePaths,
