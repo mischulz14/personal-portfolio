@@ -24,19 +24,19 @@ export default function SVGs(props: { pathIndex: number }) {
   useEffect(() => {
     // This useEffect gets triggered each time the pathIndex changes (which is each time a new section is scrolled to on the homepage)
     const animation = animate(progress, props.pathIndex, {
-      duration: 0.3,
+      duration: 0.5,
       ease: 'linear',
     });
 
     controls.start({
       rotate: [0, props.pathIndex > oldPathIndex ? 180 : -180], // the rotation is changed based on the direction of the scroll. If the scroll is down (aka the new pathindex from the props is greater than the old pathIndex), the rotation is 180, if the scroll is up, the rotation is -180
-      transition: { duration: 0.3, ease: 'linear' },
+      transition: { duration: 0.5, ease: 'linear' },
     });
 
     controls2.start({
       // this is needed because I didn't want to animate the svg path itself, but rather the svg container, which is why I had to animate the svg container's children in the opposite direction
       rotate: [0, props.pathIndex > oldPathIndex ? -180 : 180],
-      transition: { duration: 0.3, ease: 'linear' },
+      transition: { duration: 0.5, ease: 'linear' },
     });
 
     setOldPathIndex(props.pathIndex);
