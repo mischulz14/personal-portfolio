@@ -34,7 +34,7 @@ const Carousel: React.FC<CarouselProps> = ({ components }) => {
     <div className="relative">
       {currentIndex > 0 && (
         <button
-          className="absolute sm:top-1/2 top-14 hover:scale-110 transition-all duration-300 sm:-left-[70px] left-0 shadow-whiteBox -translate-y-2/3 p-4 rounded-md z-[9999]"
+          className="absolute sm:bottom-1/2 -bottom-7 hover:scale-110 transition-all duration-300 sm:-left-[70px] left-0 shadow-whiteBox translate-y-1/3 p-4 rounded-md z-[9999]"
           onClick={handlePrevious}
         >
           <ArrowLeft color="white" />
@@ -51,7 +51,7 @@ const Carousel: React.FC<CarouselProps> = ({ components }) => {
       </motion.div>
       {currentIndex < components.length - 1 && (
         <button
-          className="absolute sm:top-1/2 top-14 hover:scale-110 transition-all duration-300 sm:-right-[70px] right-0 shadow-whiteBox -translate-y-2/3 p-4 rounded-md z-[9999]"
+          className="absolute sm:bottom-1/2 -bottom-7 hover:scale-110 transition-all duration-300 sm:-right-[70px] right-0 shadow-whiteBox translate-y-1/3 p-4 rounded-md z-[9999]"
           onClick={handleNext}
         >
           <ArrowRight color="white" />

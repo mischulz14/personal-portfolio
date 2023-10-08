@@ -8,12 +8,12 @@ const Hero = () => {
       <div>
         <h1
           data-cy="homePageTitle"
-          className="px-2 mb-6 text-3xl font-semi sm:px-0 title"
+          className="pl-10 sm:pl-0 mb-6 text-3xl font-semi sm:px-0 title"
         >
           <span className="inline-block py-2 text-effect font-bold">Hi,</span>{' '}
           I&rsquo;m Michael!
         </h1>
-        <p className="text-md sm:text-lg description pr-2 sm:pr-0">
+        <p className="text-center sm:text-start text-md sm:text-lg description pr-2 sm:pr-0">
           I&rsquo;m a software developer from Vienna, nice to meet you!
         </p>
       </div>
@@ -29,6 +29,7 @@ const Hero = () => {
             transform="translate(100 100)"
           />
         </svg>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           width={250}
           height={250}
