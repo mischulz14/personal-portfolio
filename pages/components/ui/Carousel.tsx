@@ -47,7 +47,7 @@ const Carousel: React.FC<CarouselProps> = ({ components }) => {
         onAnimationComplete={() => setAnimationState('shrink')}
         transition={{ type: 'spring', stiffness: 200 }}
       >
-        {components[currentIndex]}
+        {components ? components[currentIndex] : null}
       </motion.div>
       {currentIndex < components.length - 1 && (
         <button

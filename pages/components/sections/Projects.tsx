@@ -31,13 +31,15 @@ export default function Projects() {
         </svg>
       </h2>
       <div className="flex justify-center gap-4 px-20 max-w-[600px]">
-        <Carousel components={projectsArray} />
+        {projectsArray.length > 0 ? (
+          <Carousel components={projectsArray} />
+        ) : null}
       </div>
     </>
   );
 }
 
-const projects = [
+export const projects = [
   {
     title: 'AvaAssist',
     description:
@@ -95,6 +97,6 @@ const projects = [
   },
 ];
 
-function getProjects() {
+export function getProjects() {
   return projects;
 }
