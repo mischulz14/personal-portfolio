@@ -12,7 +12,12 @@ export default function Page() {
   const techStackImagePaths = techStackImages.map((image) => image.src);
 
   useEffect(() => {
-    const imagePaths = [...projectImagePaths, ...techStackImagePaths];
+    const imagePaths = [
+      ...projectImagePaths,
+      ...techStackImagePaths,
+      '/profilepic.png',
+      '/Logo.png',
+    ];
     const images = imagePaths.map((path) => {
       const img = new Image();
       img.src = path;
