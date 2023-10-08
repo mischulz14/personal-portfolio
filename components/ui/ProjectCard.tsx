@@ -31,10 +31,10 @@ export default function ProjectCard({
       </div>
 
       <Accordion title="Description">
-        <p className="text-gray-600 dark:text-gray-400">{description}</p>
+        <p className="text-gray-300">{description}</p>
       </Accordion>
       <Accordion title="Skills/Role">
-        <p className="text-gray-600 dark:text-gray-400">{role}</p>
+        <p className="text-gray-300">{role}</p>
       </Accordion>
       <Accordion title="Technologies">
         <div className="flex flex-wrap justify-center w-full">
