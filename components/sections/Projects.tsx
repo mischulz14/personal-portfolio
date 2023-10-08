@@ -6,7 +6,7 @@ export const projects = [
     title: 'AvaAssist',
     description:
       'AvaAssist connects people with disabilities to personal assistants. It also provides a platform for organizations to manage their personal assistants and clients.',
-    role: 'Fullstack Developer role in a small development team using different technologies. Conception of new project features,UI/UX design in figma, design and development of the frontend and backend, writing tests, deployment and writing documentation.',
+    role: 'Fullstack Developer role in a small development team using different technologies. Conception of new project features, UI/UX design in Figma, design and development of the frontend and backend, writing tests, deployment and writing documentation.',
     techstack: [
       'React',
       'NextJS',
@@ -26,7 +26,7 @@ export const projects = [
     title: 'Cleanly',
     description:
       'Cleanly is a webapp that allows users to book cleaning services online. It is currently not maintained.',
-    role: 'Fullstack Developer project that implements different technologies. Conception of the complete project including user journeys, UI/UX design in figma, database design, development of the frontend and backend, writing tests and deployment of the project.',
+    role: 'Fullstack Developer project that implements different technologies. Conception of the complete project including user journeys, UI/UX design in Figma, database design, development of the frontend and backend, writing tests and deployment of the project.',
     techstack: [
       'React',
       'NextJS',
