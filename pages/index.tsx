@@ -29,7 +29,12 @@ export default function Page() {
     Promise.all(
       images.map((image) => {
         return new Promise((resolve, reject) => {
-          image.onload = resolve;
+          image.onload = () => {
+            setTimeout(() => {
+              resolve(image);
+            }, 1000);
+          };
+          image.onerror = () => reject();
         });
       }),
     ).then(() => setAreImagesLoaded(true));
