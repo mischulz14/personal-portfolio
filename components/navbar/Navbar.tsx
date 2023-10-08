@@ -20,10 +20,6 @@ export function Navbar({ percentage }: { percentage: number }) {
       {' '}
       {/* z-[9999] is used to make sure that the navbar is always on top of everything else and the links can be clicked */}
       <WebNavbar />
-      <div
-        className="bg-[#429585] fixed bottom-0 left-0  h-2"
-        style={{ width: `${percentage}%`, transition: 'width 0.5s ease-in' }}
-      />
     </div>
   );
 }

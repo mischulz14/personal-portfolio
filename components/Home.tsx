@@ -8,6 +8,7 @@ import Hero from './sections/Hero';
 import Projects from './sections/Projects';
 import TechStack from './sections/TechStack';
 import SVGs from './SVGTransform';
+import ProgressBar from './ui/ProgressBar';
 import ScrollDiv from './ui/ScrollDiv';
 
 export default function Home() {
@@ -108,6 +109,7 @@ export default function Home() {
         </section>
       </div>
       <ScrollDiv />
+      <ProgressBar percentage={navbarPercentage} />
     </div>
   );
 }
