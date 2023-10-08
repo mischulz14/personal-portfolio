@@ -31,9 +31,7 @@ export default function Projects() {
         </svg>
       </h2>
       <div className="flex justify-center gap-4 px-20 max-w-[600px]">
-        {projectsArray.length > 0 ? (
-          <Carousel components={projectsArray} />
-        ) : null}
+        {projectsArray ? <Carousel components={projectsArray} /> : null}
       </div>
     </>
   );
