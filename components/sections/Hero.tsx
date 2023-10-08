@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const Hero = () => {
   return (
-    <div className="flex relative">
+    <div className="flex relative -mt-20 sm:mt-0">
       <div>
         <h1
           data-cy="homePageTitle"

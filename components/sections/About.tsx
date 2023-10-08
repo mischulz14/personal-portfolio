@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <>
-      <div className="relative block">
+      <div className="relative block -mt-10 sm:mt-0">
         <h1 className="pb-8 text-3xl font-semibold text-center">About Me</h1>
         <svg
           className="absolute -bottom-[60px] -right-[100px] scale-[0.5] z-[-1]"
