@@ -30,7 +30,7 @@ export default function TechStack() {
   );
 }
 
-export const images = [
+export const techStackImages = [
   { src: '/html.svg', alt: 'HTML' },
   { src: '/css.svg', alt: 'CSS' },
   { src: '/tailwind.svg', alt: 'TailwindCSS' },
@@ -48,5 +48,5 @@ export const images = [
 ];
 
 export function getImages() {
-  return images;
+  return techStackImages;
 }

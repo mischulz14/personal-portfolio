@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { images } from '../sections/TechStack';
+import { techStackImages } from '../sections/TechStack';
 import Accordion from './Accordion';
 
 interface ProjectCardProps {
@@ -40,7 +40,7 @@ export default function ProjectCard({
         <div className="flex flex-wrap justify-center w-full">
           {techstack.map((tech) => {
             // search for the tech in the images array and return the image alt and src
-            const img = images.find(
+            const img = techStackImages.find(
               (image) => image.alt.toLowerCase() === tech.toLowerCase(),
             );
 

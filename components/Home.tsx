@@ -116,6 +116,6 @@ function hideScrollDiv() {
   document.querySelector('.scroll-div')?.classList.add('hidden');
 }
 
-function showScrollDiv() {
-  document.querySelector('.scroll-div')?.classList.remove('hidden');
-}
+// function showScrollDiv() { // maybe use this later
+//   document.querySelector('.scroll-div')?.classList.remove('hidden');
+// }
