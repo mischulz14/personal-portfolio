@@ -38,11 +38,11 @@ function WebNavbar() {
   const colorContext = useContext(ColorThemeContext);
   return (
     <div className="flex gap-10 justify-between items-center px-3">
-      <div className="rounded-full overflow-hidden">
+      <div className="rounded-full overflow-hidden bg-white/10 p-1 border-[0.5px] border-white/40 shadow-whiteBox">
         <NextLink href="#hero" passHref>
           <Logo
-            width="70px"
-            height="70px"
+            width="50px"
+            height="50px"
             color={colorContext.colorThemeColor}
           />
         </NextLink>
