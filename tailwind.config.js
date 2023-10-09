@@ -15,6 +15,9 @@ module.exports = {
       boxShadow: {
         whiteBox: '0 0 20px 1px rgba(255, 255, 255, 0.15)',
       },
+      fontFamily: {
+        comfortaa: ['Comfortaa', 'sans-serif'],
+      },
     },
   },
   plugins: [],

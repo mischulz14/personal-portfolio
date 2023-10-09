@@ -1,9 +1,11 @@
+import { ColorThemeContext } from '@/context/ColorThemeContextProvider';
 import { motion, useAnimate, useAnimation, useScroll } from 'framer-motion';
 import Image from 'next/image';
 import NextLink from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useClickAway } from 'react-use';
 
+import Logo from '../svgs/Logo';
 import ChangeColorThemeDropdown from './ChangeColorThemeDropdown';
 
 const navs = [
@@ -33,11 +35,16 @@ export default function Navbar() {
 }
 
 function WebNavbar() {
+  const colorContext = useContext(ColorThemeContext);
   return (
     <div className="flex gap-10 justify-between items-center px-3">
       <div className="rounded-full overflow-hidden">
         <NextLink href="#hero" passHref>
-          <Image width={50} height={50} src="/Logo.png" alt={'logo'} />
+          <Logo
+            width="70px"
+            height="70px"
+            color={colorContext.colorThemeColor}
+          />
         </NextLink>
       </div>
       <div className="flex gap-10 items-center justify-center">
