@@ -25,7 +25,7 @@ export default function Navbar() {
         {/* z-[9999] is used to make sure that the navbar is always on top of everything else and the links can be clicked */}
         <WebNavbar />
       </nav>
-      <nav className="md:hidden fixed w-full z-[9999] px-20 py-4">
+      <nav className="md:hidden fixed w-full z-[9999] px-8 py-4">
         <MobileNav />
       </nav>
     </>
@@ -64,7 +64,7 @@ export function MobileNav() {
   };
 
   return (
-    <div className="pt-3">
+    <div className="pt-3 flex w-full justify-end">
       <Hamburger
         isHamburgerOpen={isHamburgerOpen}
         setIsHamburgerOpen={setIsHamburgerOpen}
@@ -162,7 +162,7 @@ export function Hamburger({
   return (
     <button
       onClick={handleHamburgerClick}
-      className="flex flex-col justify-center gap-2 items-center ml-auto"
+      className="flex flex-col justify-center gap-2 items-center"
     >
       <motion.div
         className="w-16 h-2 bg-white/50 rounded-full"
