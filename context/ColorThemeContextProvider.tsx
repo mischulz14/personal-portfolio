@@ -93,7 +93,6 @@ export default function ColorThemeProvider({
 }
 
 function changeColorInRoot(newPrimaryColor: string, newSecondaryColor: string) {
-  // change the color of the root element
   // change :root css variables
   document.documentElement.style.setProperty(
     '--bg-theme-color',
