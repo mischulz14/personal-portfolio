@@ -1,4 +1,5 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
+import { useLocalStorage } from 'react-use';
 
 type ColorThemeContextType = {
   colorThemeColor: string;
@@ -50,25 +51,38 @@ export default function ColorThemeProvider({
 }: {
   children: React.ReactNode;
 }) {
+  const [primaryColorInLocalStorage, setPrimaryColorInLocalStorage] =
+    useLocalStorage('color', colorCodes.green.primary);
+  const [secondaryColorInLocalStorage, setSecondaryColorInLocalStorage] =
+    useLocalStorage('secondaryColor', colorCodes.green.secondary);
+
   const [colorThemeColor, setColorThemeColor] = useState(
-    colorCodes.green.primary,
+    primaryColorInLocalStorage
+      ? primaryColorInLocalStorage
+      : colorCodes.green.primary,
   );
+
+  useEffect(() => {
+    // Use the useEffect hook
+    changeColorInRoot(
+      primaryColorInLocalStorage
+        ? primaryColorInLocalStorage
+        : colorCodes.green.primary,
+      secondaryColorInLocalStorage
+        ? secondaryColorInLocalStorage
+        : colorCodes.green.secondary,
+    );
+  }, [primaryColorInLocalStorage, secondaryColorInLocalStorage]);
 
   function changeColorTheme(color: ColorOptions) {
     // find the color code from the color name
     const newColor = colorCodes[color];
 
     setColorThemeColor(newColor.primary);
+    setPrimaryColorInLocalStorage(newColor.primary);
+    setSecondaryColorInLocalStorage(newColor.secondary);
 
-    // change :root css variables
-    document.documentElement.style.setProperty(
-      '--bg-theme-color',
-      newColor.secondary,
-    );
-    document.documentElement.style.setProperty(
-      '--theme-color',
-      newColor.primary,
-    );
+    changeColorInRoot(newColor.primary, newColor.secondary);
   }
 
   return (
@@ -76,4 +90,14 @@ export default function ColorThemeProvider({
       {children}
     </ColorThemeContext.Provider>
   );
+}
+
+function changeColorInRoot(newPrimaryColor: string, newSecondaryColor: string) {
+  // change the color of the root element
+  // change :root css variables
+  document.documentElement.style.setProperty(
+    '--bg-theme-color',
+    newSecondaryColor,
+  );
+  document.documentElement.style.setProperty('--theme-color', newPrimaryColor);
 }
