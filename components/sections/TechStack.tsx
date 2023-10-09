@@ -13,7 +13,7 @@ export default function TechStack() {
 
   return (
     <div className=" max-w-xl flex flex-col justify-center items-center">
-      <p className="pt-10 pb-10 text-2xl font-medium text-center -mt-16">
+      <p className="pt-10 pb-10 text-2xl font-medium text-center -mt-16 sm:mt-0">
         <span className="text-effect inline-block pb-[8px] pl-[2px]">This</span>{' '}
         is my Tech stack
       </p>
