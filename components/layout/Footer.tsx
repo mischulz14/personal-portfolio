@@ -1,7 +1,36 @@
+import { ColorThemeContext } from '@/context/ColorThemeContextProvider';
+import { AtSymbol, GlobeOutline, Heart, Home, Phone } from 'heroicons-react';
 import Image from 'next/image';
+import { useContext } from 'react';
 
 export default function Footer() {
   const year = new Date().getFullYear();
+
+  const colorContext = useContext(ColorThemeContext);
+
+  const basicInfo = [
+    {
+      name: 'Phone',
+      value: '+4369911388765',
+      icon: <Phone color={colorContext.colorThemeColor} />,
+    },
+    {
+      name: 'Email',
+      value: 'mi.schulz@hotmail.com',
+      icon: <AtSymbol color={colorContext.colorThemeColor} />,
+    },
+    {
+      name: 'Location',
+      value: 'Vienna, Austria',
+      icon: <Home color={colorContext.colorThemeColor} />,
+    },
+    {
+      name: 'Languages',
+      value:
+        'English (C1), German (Native), Spanish (C1), Catalan (A2), French (A2)',
+      icon: <GlobeOutline color={colorContext.colorThemeColor} />,
+    },
+  ];
 
   return (
     <div className="flex items-center flex-col max-w-xs relative">
@@ -14,7 +43,7 @@ export default function Footer() {
           key={info.name}
         >
           <div className="flex gap-1 items-center justify-center">
-            <Image src={info.iconSrc} alt={info.name} width={20} height={20} />
+            {info.icon}
             <h3>{info.name}</h3>
           </div>
           {info.name === 'Languages' ? (
@@ -28,37 +57,16 @@ export default function Footer() {
       ))}
       <div className="mt-16 text-gray-500 flex gap-2 items-center justify-center">
         <span> Made with </span>
-        <Image src="/love.svg" alt="love" width={30} height={30} />
+        <Heart color={colorContext.colorThemeColor} />
         <span>by Michael Schulz</span>
       </div>
       <div className="mt-4 flex text-gray-500 gap-2 items-center justify-center">
-        <Image src="/copyright.svg" alt="love" width={20} height={20} />
+        <span>
+          {/* copyright sign*/}
+          &#169;
+        </span>
         <span>Copyright Michael Schulz {year}</span>
       </div>
     </div>
   );
 }
-
-const basicInfo = [
-  {
-    name: 'Phone',
-    value: '+4369911388765',
-    iconSrc: '/phone.svg',
-  },
-  {
-    name: 'Email',
-    value: 'mi.schulz@hotmail.com',
-    iconSrc: '/email.svg',
-  },
-  {
-    name: 'Location',
-    value: 'Vienna, Austria',
-    iconSrc: '/house.svg',
-  },
-  {
-    name: 'Languages',
-    value:
-      'English (C1), German (Native), Spanish (C1), Catalan (A2), French (A2)',
-    iconSrc: '/languages.svg',
-  },
-];

@@ -109,7 +109,7 @@ export default function Home() {
         </section>
       </div>
       <ScrollDiv />
-      <ProgressBar percentage={navbarPercentage} />
+      {/* <ProgressBar percentage={navbarPercentage} /> */}
     </div>
   );
 }

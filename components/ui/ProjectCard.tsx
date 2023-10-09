@@ -1,7 +1,7 @@
+import useSvgList from '@/utils/hooks/useSvgList';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { techStackImages } from '../sections/TechStack';
 import Accordion from './Accordion';
 
 interface ProjectCardProps {
@@ -21,6 +21,8 @@ export default function ProjectCard({
   link,
   logoSrc,
 }: ProjectCardProps) {
+  const techStackImages = useSvgList();
+
   return (
     <div className="flex flex-col gap-2 items-stretch p-4 my-4 w-[320px] sm:w-full rounded-lg  shadow-whiteBox">
       <div className="flex w-full justify-center gap-4 items-center mb-2">
@@ -37,7 +39,7 @@ export default function ProjectCard({
         <p className="text-gray-300">{role}</p>
       </Accordion>
       <Accordion title="Technologies">
-        <div className="flex flex-wrap justify-center w-full">
+        <div className="flex flex-wrap justify-center w-full gap-6">
           {techstack.map((tech) => {
             // search for the tech in the images array and return the image alt and src
             const img = techStackImages.find(
@@ -50,14 +52,10 @@ export default function ProjectCard({
                   className="flex flex-col items-center justify-center hover:scale-110 transition-all duration-300"
                   key={tech}
                 >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    width={60}
-                    height={60}
-                    className="rounded-md p-4"
-                  />
-                  <p className="text-sm mt-2">{img.alt}</p>
+                  <div className="flex flex-col justify-center items-center">
+                    <div className="h-8 w-8">{img.svgElement}</div>
+                    <p className="text-xs mt-2">{img.alt}</p>
+                  </div>
                 </div>
               );
             }

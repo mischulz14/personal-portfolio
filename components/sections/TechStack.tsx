@@ -1,7 +1,15 @@
+import { ColorThemeContext } from '@/context/ColorThemeContextProvider';
+import useSvgList from '@/utils/hooks/useSvgList';
 import Image from 'next/image';
+import { useContext } from 'react';
+
+import CSSSvg from '../svgs/CSSSvg';
+import HTMLSvg from '../svgs/HTMLSvg';
 
 export default function TechStack() {
-  const images = getImages();
+  const colorContext = useContext(ColorThemeContext);
+
+  const techStackSvgs = useSvgList();
 
   return (
     <div className=" max-w-xl flex flex-col justify-center items-center">
@@ -9,19 +17,13 @@ export default function TechStack() {
         <span className="text-effect inline-block pb-[8px] pl-[2px]">This</span>{' '}
         is my Tech stack
       </p>
-      <div className=" rounded-md sm:flex grid grid-cols-3 flex-wrap items-center justify-center flex-col sm:flex-row gap-5">
-        {images.map((image) => (
+      <div className=" rounded-md sm:flex grid grid-cols-3 flex-wrap items-center justify-center flex-col sm:flex-row gap-8">
+        {techStackSvgs.map((image) => (
           <div
             className="flex flex-col items-center justify-center hover:scale-110 transition-all duration-300"
             key={image.alt}
           >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              width={80}
-              height={80}
-              className="rounded-md p-4"
-            />
+            <div className="w-12 h-12">{image.svgElement}</div>
             <p className="text-sm mt-2">{image.alt}</p>
           </div>
         ))}
@@ -29,6 +31,10 @@ export default function TechStack() {
     </div>
   );
 }
+
+// export function getImages() {
+//   return techStackImages;
+// }
 
 export const techStackImages = [
   { src: '/html.svg', alt: 'HTML' },
@@ -46,7 +52,3 @@ export const techStackImages = [
   { src: '/git.svg', alt: 'Git' },
   { src: '/github.svg', alt: 'Github' },
 ];
-
-export function getImages() {
-  return techStackImages;
-}

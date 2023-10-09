@@ -1,3 +1,6 @@
+import { ColorThemeContext } from '@/context/ColorThemeContextProvider';
+import { useContext } from 'react';
+
 import Carousel from '../ui/Carousel';
 import ProjectCard from '../ui/ProjectCard';
 
@@ -14,6 +17,8 @@ export default function Projects() {
     />
   ));
 
+  const colorContext = useContext(ColorThemeContext);
+
   return (
     <>
       <h2 className="font-bold sm:mb-14 mb-6 text-center text-2xl w-fit-content block relative">
@@ -24,7 +29,7 @@ export default function Projects() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            fill="#429585"
+            fill={colorContext.colorThemeColor}
             d="M39.5,-49.7C52.9,-35.7,66.8,-25,68.1,-12.7C69.4,-0.5,58.1,13.3,48.9,27.5C39.8,41.8,32.9,56.5,21.8,61C10.8,65.4,-4.3,59.5,-16.5,52.1C-28.7,44.8,-37.9,36,-49.3,24.5C-60.6,13,-74.1,-1.2,-73.1,-14C-72.2,-26.8,-56.9,-38.2,-42.3,-52C-27.7,-65.8,-13.9,-82,-0.4,-81.5C13,-80.9,26,-63.7,39.5,-49.7Z"
             transform="translate(100 100)"
           />

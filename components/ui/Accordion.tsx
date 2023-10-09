@@ -1,6 +1,7 @@
+import { ColorThemeContext } from '@/context/ColorThemeContextProvider';
 import { motion } from 'framer-motion';
 import { ChevronDown, ChevronUp } from 'heroicons-react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 interface AccordionProps {
   additionalButton?: React.ReactNode;
@@ -30,13 +31,17 @@ export default function Accordion({
   additionalButton,
 }: AccordionProps) {
   const [open, setOpen] = useState(false);
+  const colorContext = useContext(ColorThemeContext);
 
   return (
     <>
       <div
-        className={`flex justify-between rounded-md px-6 py-4 items-center border-2 border-transparent text-gray-200 bg-[#429585] bg-opacity-60`}
+        className="flex justify-between rounded-md px-6 py-4 items-center border-2 border-transparent text-gray-200 bg-opacity-60"
         onClick={() => {
           setOpen((prev) => !prev);
+        }}
+        style={{
+          backgroundColor: colorContext.colorThemeColor,
         }}
       >
         <div className="flex gap-4">

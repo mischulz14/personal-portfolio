@@ -3,6 +3,8 @@ import Image from 'next/image';
 import NextLink from 'next/link';
 import { useEffect } from 'react';
 
+import ChangeColorThemeDropdown from './ChangeColorThemeDropdown';
+
 const navs = [
   { text: 'About', href: '#about' },
   { text: 'Techstack', href: '#stack' },
@@ -40,6 +42,7 @@ function WebNavbar() {
             </NextLink>
           </button>
         ))}
+        <ChangeColorThemeDropdown />
       </div>
     </div>
   );
