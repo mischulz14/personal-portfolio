@@ -86,15 +86,7 @@ export const projects = [
     description:
       'A mockup of an ecommerce store. It has a fully functional shopping cart and checkout process, but with no payment.',
     role: 'Fullstack Developer project that implements different technologies. Conception of the complete project including design and development of the frontend and backend, writing tests and deployment of the project.',
-    techstack: [
-      'React',
-      'NextJS',
-      'TailwindCSS',
-      'Node',
-      'PostgreSQL',
-      'Git',
-      'Github',
-    ],
+    techstack: ['React', 'NextJS', 'TailwindCSS', 'Node', 'Git', 'Github'],
     link: 'https://origame-ecommerce.netlify.app/',
     logoSrc: '/origame.svg',
   },
