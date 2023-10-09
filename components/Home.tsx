@@ -56,7 +56,7 @@ export default function Home() {
 
   return (
     <div>
-      <Navbar percentage={progressBarPercentage} />
+      <Navbar />
       <div
         className="relative h-screen w-screen main snap-mandatory snap-y overflow-auto"
         style={{ position: 'sticky', top: 0 }}
