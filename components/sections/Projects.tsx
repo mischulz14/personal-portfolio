@@ -21,7 +21,7 @@ export default function Projects() {
 
   return (
     <>
-      <h2 className="font-bold md:mb-10 mb-6 text-center text-2xl w-fit-content block relative sm:mt-12 mt-0">
+      <h2 className="font-bold mb-10 text-center text-2xl w-fit-content block relative sm:mt-12 mt-0">
         <span>My Projects</span>{' '}
         <svg
           className="scale-[3] absolute right-24 -top-0 z-[-1]"
