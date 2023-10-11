@@ -12,6 +12,7 @@ const navs = [
   { text: 'About', href: '#about' },
   { text: 'Techstack', href: '#stack' },
   { text: 'Projects', href: '#portfolio' },
+  { text: 'Github' , href: 'https://github.com/mischulz14' }
 ];
 
 export default function Navbar() {
