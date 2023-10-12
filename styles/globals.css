@@ -33,7 +33,7 @@ body {
 }
 
 .section {
-  @apply opacity-0 min-h-screen snap-start flex flex-col justify-center items-center transition-all ease-out p-6;
+  @apply opacity-0 min-h-screen snap-start flex flex-col justify-center items-center transition-all ease-out p-6 overflow-x-hidden;
   transition-duration: 2000ms;
 }
 
