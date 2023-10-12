@@ -66,7 +66,7 @@ export default function SVGs(props: { pathIndex: number }) {
               height={100}
               className="absolute left-[18px] top-1/2 -translate-y-7"
             >
-              <g transform="scale(2.5)">
+              <g transform="scale(2)">
                 <motion.path fill={fill} d={path} />
               </g>
             </svg>
