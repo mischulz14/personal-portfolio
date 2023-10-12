@@ -49,7 +49,7 @@ export default function SVGs(props: { pathIndex: number }) {
   return (
     <div className="fixed top-0 pl-0 md:pl-8 left-0 h-screen w-20 sm:w-40 flex justify-center md:items-center items-start">
       <motion.div
-        className="border-[0.5px] scale-50 md:scale-110 rounded-full flex items-center justify-center "
+        className="border-[0.5px] scale-50 md:scale-100 rounded-full flex items-center justify-center "
         // animate={controls}
       >
         <motion.div
@@ -66,7 +66,7 @@ export default function SVGs(props: { pathIndex: number }) {
               height={100}
               className="absolute left-[18px] top-1/2 -translate-y-7"
             >
-              <g transform="scale(2)">
+              <g transform="scale(2.5)">
                 <motion.path fill={fill} d={path} />
               </g>
             </svg>
