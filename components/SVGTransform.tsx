@@ -47,7 +47,7 @@ export default function SVGs(props: { pathIndex: number }) {
   }, [progress, props.pathIndex]);
 
   return (
-    <div className="fixed top-0 pl-0 md:pl-8 left-0 h-screen w-20 md:w-40 flex justify-center md:items-center items-start">
+    <div className="fixed top-0 pl-0 md:pl-6 left-0 h-screen w-20 flex justify-center md:items-center items-start">
       <motion.div
         className="border-[0.5px] scale-50 sm:scale-75 lg:scale-110 rounded-full flex items-center justify-center "
         // animate={controls}
