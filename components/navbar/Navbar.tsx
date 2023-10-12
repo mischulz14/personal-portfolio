@@ -23,12 +23,12 @@ export default function Navbar() {
   }, [scrollYProgress]);
   return (
     <>
-      <nav className="md:block fixed hidden w-full z-[9999] px-20 py-4">
+      <nav className="lg:block fixed hidden w-full z-[9999] px-20 py-4">
         {' '}
         {/* z-[9999] is used to make sure that the navbar is always on top of everything else and the links can be clicked */}
         <WebNavbar />
       </nav>
-      <nav className="md:hidden fixed w-full z-[9999] px-8 py-4">
+      <nav className="lg:hidden fixed w-full z-[9999] px-8 py-4">
         <MobileNav />
       </nav>
     </>
