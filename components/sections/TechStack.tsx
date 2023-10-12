@@ -20,7 +20,7 @@ export default function TechStack() {
       <div className=" rounded-md sm:flex grid grid-cols-3 flex-wrap items-center justify-center flex-col sm:flex-row gap-8">
         {techStackSvgs.map((image) => (
           <div
-            className="flex flex-col items-center justify-center hover:scale-110 transition-all duration-300"
+            className="flex flex-col items-center justify-center hover:scale-110 transition-all duration-300 max-w-full sm:max-w-lg"
             key={image.alt}
           >
             <div className="w-12 h-12">{image.svgElement}</div>
