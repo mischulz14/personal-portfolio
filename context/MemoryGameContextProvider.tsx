@@ -27,6 +27,7 @@ interface MemoryCardContextType {
   tries: number;
   resetGame: () => void;
   isYouWinScreenShown: boolean;
+  setIsYouWinScreenShown: (value: boolean) => void;
 }
 
 export const MemoryCardContext = createContext<MemoryCardContextType>({
@@ -41,6 +42,7 @@ export const MemoryCardContext = createContext<MemoryCardContextType>({
   tries: 0,
   resetGame: () => {},
   isYouWinScreenShown: false,
+  setIsYouWinScreenShown: () => {},
 });
 
 export default function MemoryCardContextProvider({
@@ -157,6 +159,7 @@ export default function MemoryCardContextProvider({
     tries,
     resetGame,
     isYouWinScreenShown,
+    setIsYouWinScreenShown,
   };
 
   return (

@@ -41,6 +41,7 @@ export default function MemoryCardContainer() {
         onClick={() => {
           memoryGameContext.setGoBackToHome(true);
           memoryGameContext.resetGame();
+          memoryGameContext.setIsYouWinScreenShown(false);
         }}
         type="tertiary"
       >
