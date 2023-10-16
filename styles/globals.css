@@ -32,7 +32,6 @@ body {
 
 .section {
   @apply opacity-0 min-h-screen snap-start flex flex-col overflow-hidden justify-center items-center transition-all ease-out p-6;
-
   transition-duration: 2000ms;
 }
 

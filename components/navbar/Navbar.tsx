@@ -12,7 +12,8 @@ const navs = [
   { text: 'About', href: '#about' },
   { text: 'Techstack', href: '#stack' },
   { text: 'Projects', href: '#portfolio' },
-  { text: 'Github' , href: 'https://github.com/mischulz14' }
+  { text: 'Github', href: 'https://github.com/mischulz14' },
+  { text: "I'm bored", href: '#games' },
 ];
 
 export default function Navbar() {
@@ -66,13 +67,17 @@ export function MobileNav() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const dropDownRef = useRef<HTMLDivElement>(null);
+  const colorContext = useContext(ColorThemeContext);
 
   const handleNavClick = () => {
     setIsNavOpen(false);
   };
 
   return (
-    <div className="pt-3 flex w-full justify-end">
+    <div className="pt-3 flex w-full justify-between">
+      <NextLink href="#hero" passHref>
+        <Logo width="50px" height="50px" color={colorContext.colorThemeColor} />
+      </NextLink>
       <Hamburger
         isHamburgerOpen={isHamburgerOpen}
         setIsHamburgerOpen={setIsHamburgerOpen}
