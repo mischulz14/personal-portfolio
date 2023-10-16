@@ -5,6 +5,7 @@ import Footer from './layout/Footer';
 import Navbar from './navbar/Navbar';
 import About from './sections/About';
 import Hero from './sections/Hero';
+import MiniGames from './sections/MiniGames';
 import Projects from './sections/Projects';
 import TechStack from './sections/TechStack';
 import SVGs from './SVGTransform';
@@ -97,8 +98,16 @@ export default function Home() {
         </section>
         <section
           ref={(el) => (sectionsRef.current[4] = el)}
-          id="footer"
+          id="games"
           property="4"
+          className="section"
+        >
+          <MiniGames />
+        </section>
+        <section
+          ref={(el) => (sectionsRef.current[5] = el)}
+          id="footer"
+          property="5"
           className="section"
         >
           <Footer />
