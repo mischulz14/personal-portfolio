@@ -37,8 +37,6 @@ export default function MemoryCard({ card }: MemoryCardProps) {
       return;
     }
 
-    card.flipped = true;
-
     setIsCardFlipped(!isCardFlipped);
 
     controls.start({
