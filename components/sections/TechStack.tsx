@@ -13,7 +13,7 @@ export default function TechStack() {
 
   return (
     <div className=" max-w-xl flex flex-col justify-center items-center">
-      <p className="pt-10 pb-10 text-2xl font-medium text-center -mt-16 sm:mt-0">
+      <p className="pt-10 pb-10 sm:text-2xl text-xl font-medium text-center -mt-16 sm:mt-0">
         <span className="text-effect inline-block pb-[8px] pl-[2px]">This</span>{' '}
         is my Tech stack
       </p>
@@ -23,7 +23,7 @@ export default function TechStack() {
             className="flex flex-col items-center justify-center hover:scale-110 transition-all duration-300"
             key={image.alt}
           >
-            <div className="w-12 h-12">{image.svgElement}</div>
+            <div className="sm:w-12 sm:h-12 h-5 w-5">{image.svgElement}</div>
             <p className="text-sm mt-2">{image.alt}</p>
           </div>
         ))}

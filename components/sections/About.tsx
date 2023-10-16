@@ -6,7 +6,9 @@ export default function About() {
   return (
     <>
       <div className="relative block -mt-10 sm:mt-0">
-        <h1 className="pb-8 text-3xl font-semibold text-center">About Me</h1>
+        <h1 className="pb-8 sm:text-3xl text-2xl font-semibold text-center">
+          About Me
+        </h1>
         <svg
           className="absolute -bottom-[60px] -right-[100px] scale-[0.5] z-[-1]"
           viewBox="0 0 200 200"
