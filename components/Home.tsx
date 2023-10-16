@@ -56,7 +56,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <Navbar />
       <div
         className="relative h-screen w-screen main snap-mandatory snap-y overflow-auto"
