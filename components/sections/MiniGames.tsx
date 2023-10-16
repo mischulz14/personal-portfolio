@@ -39,6 +39,7 @@ export default function MiniGames() {
               type="primary"
               onClick={() => {
                 memoryGameContext.setGoBackToHome(false);
+                memoryGameContext.setIsYouWinScreenShown(false);
                 setRenderedComponent('memory');
               }}
             >
