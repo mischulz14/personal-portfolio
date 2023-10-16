@@ -17,7 +17,6 @@ export interface MemoryCard {
 
 interface MemoryCardContextType {
   resetBoard: boolean;
-  flippedUpCardsCount: number;
   flippedUpCards: MemoryCard[];
   checkForMatch: () => void;
   isCheckingForMatch: boolean;
@@ -32,7 +31,6 @@ interface MemoryCardContextType {
 
 export const MemoryCardContext = createContext<MemoryCardContextType>({
   resetBoard: false,
-  flippedUpCardsCount: 0,
   flippedUpCards: [],
   checkForMatch: () => {},
   isCheckingForMatch: false,
@@ -70,66 +68,32 @@ export default function MemoryCardContextProvider({
     }
   }, []);
 
-  function triggerAnimationOut() {
-    setResetBoard((prev) => !prev);
-  }
-
-  function checkIfAllCardsAreMatched() {
-    const unmatchedCards = cards.filter((card) => !card.isMatched);
-    if (unmatchedCards.length === 0) {
-      console.log('all cards are matched');
-    }
-
-    return unmatchedCards.length === 0;
-  }
-
   function checkForMatch() {
     console.log('checking for match');
     setTries((prev) => prev + 1);
     setIsCheckingForMatch(true);
-    const areSameCardsFlipped =
-      flippedUpCards[0].name === flippedUpCards[1].name;
 
-    if (areSameCardsFlipped) {
-      console.log('match');
+    if (areSameCardsFlipped(flippedUpCards)) {
       setResetBoard(false);
-      const card1 = cards.find((card) => card.id === flippedUpCards[0].id);
-      const card2 = cards.find((card) => card.id === flippedUpCards[1].id);
-      if (card1 && card2) {
-        card1.isMatched = true;
-        card2.isMatched = true;
-      }
+      findCardsAndSetThemToIsMatched(cards, flippedUpCards);
 
-      const gameOver = checkIfAllCardsAreMatched();
+      const gameOver = checkIfAllCardsAreMatched(cards);
       if (gameOver) {
-        setTimeout(() => {
-          // check if the tries in the local storage is less than the current tries
-          // @ts-ignore
-          if (triesInLocalStorage === 0 || triesInLocalStorage > tries) {
-            setTriesInLocalStorage(tries + 1);
-          }
-
-          setIsYouWinScreenShown(true);
-          resetGame();
-          return;
-        }, 1300);
+        triggerGameOverActions(
+          triesInLocalStorage,
+          tries,
+          setTries,
+          setTriesInLocalStorage,
+          setIsYouWinScreenShown,
+          resetGame,
+        );
         return;
       }
 
-      setTimeout(() => {
-        setIsCheckingForMatch(false);
-        console.log('winner');
-        flippedUpCards = [];
-      }, 800);
+      triggerActionsAfterMatch(setIsCheckingForMatch, flippedUpCards);
+      return;
     } else {
-      console.log('no match');
-      setResetBoard(true);
-      setTimeout(() => {
-        setIsCheckingForMatch(false);
-        triggerAnimationOut();
-        flippedUpCards = [];
-        setResetBoard(false);
-      }, 1000);
+      resetAfterNoMatch(setResetBoard, setIsCheckingForMatch, flippedUpCards);
       return;
     }
   }
@@ -148,13 +112,11 @@ export default function MemoryCardContextProvider({
 
   const contextValue = {
     resetBoard: resetBoard,
-    flippedUpCardsCount: flippedUpCards.length,
     flippedUpCards: flippedUpCards,
     checkForMatch,
     isCheckingForMatch: isCheckingForMatch,
     cards,
     goBackToHome,
-    triggerAnimationOut,
     setGoBackToHome,
     tries,
     resetGame,
@@ -169,6 +131,85 @@ export default function MemoryCardContextProvider({
   );
 }
 
+// Utility functions
+
+function checkIfAllCardsAreMatched(cards: MemoryCard[] = memoryCards) {
+  const unmatchedCards = cards.filter((card) => !card.isMatched);
+  if (unmatchedCards.length === 0) {
+    console.log('all cards are matched');
+  }
+
+  return unmatchedCards.length === 0;
+}
+
+function findCardsAndSetThemToIsMatched(
+  cards: MemoryCard[],
+  flippedUpCards: MemoryCard[],
+) {
+  const card1 = cards.find((card) => card.id === flippedUpCards[0].id);
+  const card2 = cards.find((card) => card.id === flippedUpCards[1].id);
+  if (card1 && card2) {
+    card1.isMatched = true;
+    card2.isMatched = true;
+  }
+}
+
+function areSameCardsFlipped(flippedUpCards: MemoryCard[]) {
+  return flippedUpCards[0].name === flippedUpCards[1].name;
+}
+
+function triggerActionsAfterMatch(
+  setIsCheckingForMatch: (value: boolean) => void,
+  flippedUpCards: MemoryCard[] = [],
+) {
+  setTimeout(() => {
+    setIsCheckingForMatch(false);
+    console.log('winner');
+    flippedUpCards = [];
+  }, 800);
+}
+
+function resetAfterNoMatch(
+  setResetBoard: (value: boolean) => void,
+  setIsCheckingForMatch: (value: boolean) => void,
+  flippedUpCards: MemoryCard[] = [],
+) {
+  console.log('no match');
+  setResetBoard(true);
+  setTimeout(() => {
+    setIsCheckingForMatch(false);
+    flippedUpCards = [];
+    setResetBoard(false);
+  }, 700);
+}
+
+function triggerGameOverActions(
+  triesInLocalStorage: number | undefined,
+  tries: number,
+  setTries: (value: number) => void,
+  setTriesInLocalStorage: (value: number) => void,
+  setIsYouWinScreenShown: (value: boolean) => void,
+  resetGame: () => void,
+) {
+  setTimeout(() => {
+    // check if the tries in the local storage is less than the current tries
+    // @ts-ignore
+    if (triesInLocalStorage === 0 || triesInLocalStorage > tries) {
+      // @ts-ignore
+      setTries((prevTries: number) => {
+        const newTries = prevTries + 1;
+        setTriesInLocalStorage(newTries);
+        return newTries;
+      });
+    }
+
+    setIsYouWinScreenShown(true);
+    resetGame();
+    return;
+  }, 1300);
+}
+
+// data for the memory cards
 export const memoryCards = [
   {
     name: 'pencil',

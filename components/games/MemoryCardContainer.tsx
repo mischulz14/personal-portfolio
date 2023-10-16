@@ -16,8 +16,7 @@ export default function MemoryCardContainer() {
 
   useEffect(() => {
     setMemoryCards(shuffle([...memoryGameContext.cards]));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [memoryGameContext.cards]);
 
   return (
     <>
