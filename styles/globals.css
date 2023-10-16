@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap'); */
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -33,7 +31,8 @@ body {
 }
 
 .section {
-  @apply opacity-0 min-h-screen snap-start flex flex-col justify-center items-center transition-all ease-out p-6 overflow-x-hidden;
+  @apply opacity-0 min-h-screen snap-start flex flex-col overflow-hidden justify-center items-center transition-all ease-out p-6;
+
   transition-duration: 2000ms;
 }
 

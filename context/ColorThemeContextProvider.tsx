@@ -63,7 +63,6 @@ export default function ColorThemeProvider({
   );
 
   useEffect(() => {
-    // Use the useEffect hook
     changeColorInRoot(
       primaryColorInLocalStorage
         ? primaryColorInLocalStorage
@@ -75,7 +74,7 @@ export default function ColorThemeProvider({
   }, [primaryColorInLocalStorage, secondaryColorInLocalStorage]);
 
   function changeColorTheme(color: ColorOptions) {
-    // find the color code from the color name
+    // find the color code info in the colorCodes object from the param color name
     const newColor = colorCodes[color];
 
     setColorThemeColor(newColor.primary);

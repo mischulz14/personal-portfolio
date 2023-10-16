@@ -8,10 +8,17 @@ import {
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { getIndex, useFlubber } from '../utils/hooks/useFlubber';
-import { about, contact, hero, projects, techstack } from '../utils/svg/paths';
+import {
+  about,
+  contact,
+  gamepad,
+  hero,
+  projects,
+  techstack,
+} from '../utils/svg/paths';
 
-const paths = [hero, about, techstack, projects, contact];
-const colors = ['#fff', '#fff', '#fff', '#fff', '#fff'];
+const paths = [hero, about, techstack, projects, gamepad, contact];
+const colors = ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff'];
 
 export default function SVGs(props: { pathIndex: number }) {
   const progress = useMotionValue(props.pathIndex);
