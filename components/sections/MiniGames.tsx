@@ -26,7 +26,7 @@ export default function MiniGames() {
         <>
           <h3 className="text-effect sm:text-2xl text-xl pb-1 ">Bored?</h3>
           <p className="pb-3">Play some Minigames:</p>
-          <div className="h-40 w-64 shadow-whiteBox flex flex-col items-center justify-center gap-6">
+          <div className="sm:h-64 sm:w-96 p-10 shadow-whiteBox rounded-lg flex flex-col items-center justify-center gap-6">
             <Button
               type="primary"
               onClick={() => {
@@ -46,7 +46,7 @@ export default function MiniGames() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="flex flex-col justify-center items-center gap-6 p-10 shadow-whiteBox"
+          className="flex flex-col justify-center items-center gap-6 p-10 shadow-whiteBox rounded-lg"
         >
           <p className="font-bold text-2xl">You Won!</p>
           <Button

@@ -30,7 +30,7 @@ export default function MemoryCardContainer() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="grid sm:grid-cols-4 grid-cols-3 gap-3 justify-center shadow-whiteBox p-5 max-w-md"
+        className="grid sm:grid-cols-4 grid-cols-3 gap-3 justify-center shadow-whiteBox rounded-lg p-5 max-w-md"
       >
         {memoryCards.map((card) => {
           return <MemoryCard key={card.id} card={card} />;
