@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { useContext, useEffect, useState } from 'react';
 import { useLocalStorage } from 'react-use';
 
+import Button from '../ui/Button';
 import MemoryCard from './MemoryCard';
 
 export default function MemoryCardContainer() {
@@ -36,6 +37,15 @@ export default function MemoryCardContainer() {
           return <MemoryCard key={card.id} card={card} />;
         })}
       </motion.div>
+      <Button
+        onClick={() => {
+          memoryGameContext.setGoBackToHome(true);
+          memoryGameContext.resetGame();
+        }}
+        type="tertiary"
+      >
+        Back
+      </Button>
     </>
   );
 }

@@ -17,11 +17,19 @@ export default function MiniGames() {
   >('home');
 
   useEffect(() => {
-    memoryGameContext.goBackToHome ? setRenderedComponent('win') : null;
+    memoryGameContext.goBackToHome ? setRenderedComponent('home') : null;
   }, [memoryGameContext.goBackToHome]);
+  useEffect(() => {
+    memoryGameContext.isYouWinScreenShown ? setRenderedComponent('win') : null;
+  }, [memoryGameContext.isYouWinScreenShown]);
 
   return (
-    <div className="flex flex-wrap gap-3 justify-center items-center rounded-lg flex-col">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="flex flex-wrap gap-3 justify-center items-center rounded-lg flex-col"
+    >
       {renderedComponent === 'home' && (
         <>
           <h3 className="text-effect sm:text-2xl text-xl pb-1 ">Bored?</h3>
@@ -59,7 +67,7 @@ export default function MiniGames() {
           </Button>
         </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 }
 

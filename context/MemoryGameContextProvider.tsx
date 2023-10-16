@@ -25,6 +25,8 @@ interface MemoryCardContextType {
   goBackToHome: boolean;
   setGoBackToHome: (value: boolean) => void;
   tries: number;
+  resetGame: () => void;
+  isYouWinScreenShown: boolean;
 }
 
 export const MemoryCardContext = createContext<MemoryCardContextType>({
@@ -37,6 +39,8 @@ export const MemoryCardContext = createContext<MemoryCardContextType>({
   goBackToHome: false,
   setGoBackToHome: () => {},
   tries: 0,
+  resetGame: () => {},
+  isYouWinScreenShown: false,
 });
 
 export default function MemoryCardContextProvider({
@@ -52,6 +56,7 @@ export default function MemoryCardContextProvider({
   );
   const [isCheckingForMatch, setIsCheckingForMatch] = useState(false);
   const [goBackToHome, setGoBackToHome] = useState(false);
+  const [isYouWinScreenShown, setIsYouWinScreenShown] = useState(false);
   const [cards, setCards] = useState<MemoryCard[]>(shuffle(getMemoryCards()));
   let flippedUpCards: MemoryCard[] = [];
 
@@ -102,7 +107,7 @@ export default function MemoryCardContextProvider({
             setTriesInLocalStorage(tries + 1);
           }
 
-          setGoBackToHome(true);
+          setIsYouWinScreenShown(true);
           resetGame();
           return;
         }, 1300);
@@ -135,6 +140,7 @@ export default function MemoryCardContextProvider({
     });
     tries && setTries(0);
     setCards(shuffle(getMemoryCards()));
+    isYouWinScreenShown && setIsYouWinScreenShown(false);
     return;
   }
 
@@ -149,6 +155,8 @@ export default function MemoryCardContextProvider({
     triggerAnimationOut,
     setGoBackToHome,
     tries,
+    resetGame,
+    isYouWinScreenShown,
   };
 
   return (
