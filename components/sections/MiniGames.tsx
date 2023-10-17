@@ -12,6 +12,7 @@ import MemoryCardContainer from '../games/MemoryCardContainer';
 import MiniGamesHomescreen from '../games/MiniGamesHomescreen';
 import PatternMatch from '../games/PatternMatch';
 import PatternMatchExplication from '../games/PatternMatchExplication';
+import YouWonScreen from '../games/YouWonScreen';
 import Button from '../ui/Button';
 
 export default function MiniGames() {
@@ -19,16 +20,14 @@ export default function MiniGames() {
 
   const { t } = useTranslation('common');
   const [renderedComponent, setRenderedComponent] = useState<
-    'memory' | 'gameover' | 'home' | 'patterns'
+    'memory' | 'gameover' | 'home' | 'patterns' | 'win'
   >('home');
 
   useEffect(() => {
     memoryGameContext.goBackToHome ? setRenderedComponent('home') : null;
   }, [memoryGameContext.goBackToHome]);
   useEffect(() => {
-    memoryGameContext.isYouWinScreenShown
-      ? setRenderedComponent('gameover')
-      : null;
+    memoryGameContext.isYouWinScreenShown ? setRenderedComponent('win') : null;
   }, [memoryGameContext.isYouWinScreenShown]);
 
   return (
@@ -47,6 +46,9 @@ export default function MiniGames() {
       )}
       {renderedComponent === 'gameover' && (
         <GameOverScreen setRenderedComponent={setRenderedComponent} />
+      )}
+      {renderedComponent === 'win' && (
+        <YouWonScreen setRenderedComponent={setRenderedComponent} />
       )}
     </motion.div>
   );

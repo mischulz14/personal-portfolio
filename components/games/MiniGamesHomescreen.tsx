@@ -8,7 +8,7 @@ export default function MiniGamesHomescreen({
   setRenderedComponent,
 }: {
   setRenderedComponent: React.Dispatch<
-    React.SetStateAction<'memory' | 'gameover' | 'home' | 'patterns'>
+    React.SetStateAction<'memory' | 'gameover' | 'home' | 'patterns' | 'win'>
   >;
 }) {
   const { t } = useTranslation('common');

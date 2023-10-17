@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 
 import Button from '../ui/Button';
 
-export default function GameOverScreen({
+export default function YouWonScreen({
   setRenderedComponent,
 }: {
   setRenderedComponent: React.Dispatch<
@@ -18,9 +18,8 @@ export default function GameOverScreen({
       exit={{ opacity: 0 }}
       className="flex flex-col justify-center items-center gap-6 p-10 shadow-whiteBox rounded-lg"
     >
-      <p className="font-bold text-xl">Game Over.</p>
-      <p className="font-bold text-center">{t('didnt-win')}</p>
-      <p className="font-bold text-center">{t('not-bored-lost')}</p>
+      <p className="font-bold text-xl">{t('you-won')}</p>
+      <p className="font-bold text-center">{t('not-bored')}</p>
       <Button
         type="primary"
         onClick={() => {
