@@ -43,6 +43,7 @@ export default function PatternMatch({
   const [gameOver, setGameOver] = useState(false);
   const [leastTriesInLocalStorage, setLeastTriesInLocalStorage] =
     useLocalStorage('leastTries', 0);
+  const maxLevels = 9;
 
   function initializeLocalStorage() {
     if (!leastTriesInLocalStorage) {
@@ -98,7 +99,7 @@ export default function PatternMatch({
         setTimeout(() => {
           setLevel((prevLevel) => {
             const nextLevel = prevLevel + 1;
-            if (nextLevel > 9) {
+            if (nextLevel > maxLevels) {
               setGameOver(true); // Set gameOver to true if the next level is 3
             }
             return nextLevel; // Return the next level to update the state
@@ -142,7 +143,7 @@ export default function PatternMatch({
     <div className="flex flex-col justify-center items-center gap-5 w-full">
       <div className="mr-auto px-3 sm:text-lg font-bold ">
         {' '}
-        Level {level < 3 && level}
+        Level {level < maxLevels && level}
       </div>
       <div className="flex text-sm sm:text-base gap-10 justify-between w-full px-3">
         <div>
