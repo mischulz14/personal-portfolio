@@ -16,8 +16,8 @@ export default function TailwindSvg({ color }: { color: string }) {
             y2="67.5555556%"
             id="linearGradient-1"
           >
-            <stop stop-color={color} offset="0%"></stop>
-            <stop stop-color={color} offset="100%"></stop>
+            <stop stopColor={color} offset="0%"></stop>
+            <stop stopColor={color} offset="100%"></stop>
           </linearGradient>
         </defs>
         <g>

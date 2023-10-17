@@ -13,19 +13,19 @@ export default function GitHubSvg({ color }: { color: string }) {
         <g
           id="team-collaboration/version-control/github"
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           fill="none"
-          fill-rule="evenodd"
+          fillRule="evenodd"
         >
           <g
             id="container"
             transform="translate(2.000000, 2.000000)"
-            fill-rule="nonzero"
+            fillRule="nonzero"
           >
             <rect
               id="mask"
               stroke={color}
-              stroke-width="2"
+              strokeWidth="2"
               fill={color}
               x="-1"
               y="-1"
