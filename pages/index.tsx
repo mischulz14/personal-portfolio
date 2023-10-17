@@ -18,7 +18,6 @@ export default function Page() {
       ...projectImagePaths,
       ...techStackImagePaths,
       '/profilepic.png',
-      '/Logo.png',
     ];
     const images = imagePaths.map((path) => {
       const img = new Image();
