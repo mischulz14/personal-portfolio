@@ -1,4 +1,5 @@
 import useSvgList from '@/utils/hooks/useSvgList';
+import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -22,6 +23,7 @@ export default function ProjectCard({
   logoSrc,
 }: ProjectCardProps) {
   const techStackImages = useSvgList();
+  const { t } = useTranslation();
 
   return (
     <div className="flex flex-col gap-2 items-stretch p-4 my-4 w-[320px] sm:w-full rounded-lg  shadow-whiteBox">
@@ -32,13 +34,13 @@ export default function ProjectCard({
         <Image src={logoSrc} alt={title} width={40} height={40} />
       </div>
 
-      <Accordion title="Description">
-        <p className="text-gray-300">{description}</p>
+      <Accordion title={t('common:description')}>
+        <p className="text-gray-300">{t(`common:${description}`)}</p>
       </Accordion>
-      <Accordion title="Skills/Role">
-        <p className="text-gray-300">{role}</p>
+      <Accordion title={'Skills/' + t('common:role')}>
+        <p className="text-gray-300">{t(`common:${role}`)}</p>
       </Accordion>
-      <Accordion title="Technologies">
+      <Accordion title={t('common:technologies')}>
         <div className="flex flex-wrap justify-center w-full gap-6">
           {techstack.map((tech) => {
             // search for the tech in the images array and return the image alt and src
@@ -68,7 +70,7 @@ export default function ProjectCard({
         className="bg-white/10 border-[1px] hover:scale-105 transition-all duration-300 border-white/10 rounded-full my-2 px-4 py-1 text-center"
         href={link}
       >
-        Check it out
+        {t('common:check-it')}
       </Link>
     </div>
   );

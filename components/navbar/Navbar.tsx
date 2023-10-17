@@ -1,5 +1,6 @@
 import { ColorThemeContext } from '@/context/ColorThemeContextProvider';
 import { motion, useAnimate, useAnimation, useScroll } from 'framer-motion';
+import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import { useContext, useEffect, useRef, useState } from 'react';
@@ -8,40 +9,51 @@ import { useClickAway } from 'react-use';
 import Logo from '../svgs/Logo';
 import ChangeColorThemeDropdown from './ChangeColorThemeDropdown';
 
-const navs = [
-  { text: 'About', href: '#about' },
-  { text: 'Techstack', href: '#stack' },
-  { text: 'Projects', href: '#portfolio' },
-  { text: 'Github', href: 'https://github.com/mischulz14' },
-  { text: "I'm bored", href: '#games' },
-];
-
-export default function Navbar() {
+export default function Navbar({
+  setHideScrollDiv,
+}: {
+  setHideScrollDiv: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const { scrollYProgress } = useScroll();
+
+  const { t } = useTranslation();
+  const navs = [
+    { text: t('common:about-me'), href: '#about' },
+    { text: 'Techstack', href: '#stack' },
+    { text: t('common:projects'), href: '#portfolio' },
+    { text: 'Github', href: 'https://github.com/mischulz14' },
+    { text: t('common:bored'), href: '#games' },
+  ];
 
   useEffect(() => {
     console.log(scrollYProgress);
   }, [scrollYProgress]);
   return (
     <>
-      <nav className="lg:block fixed hidden w-full z-[9999] px-20 py-4">
+      <nav
+        onClick={() => setHideScrollDiv(true)}
+        className="xl:block fixed hidden w-full z-[9999] px-20 py-4"
+      >
         {' '}
         {/* z-[9999] is used to make sure that the navbar is always on top of everything else and the links can be clicked */}
-        <WebNavbar />
+        <WebNavbar navs={navs} />
       </nav>
-      <nav className="lg:hidden fixed w-full z-[9999] px-8 py-4">
-        <MobileNav />
+      <nav
+        onClick={() => setHideScrollDiv(true)}
+        className="xl:hidden fixed w-full z-[9999] px-8 py-4"
+      >
+        <MobileNav navs={navs} />
       </nav>
     </>
   );
 }
 
-function WebNavbar() {
+function WebNavbar({ navs }: { navs: { text: string; href: string }[] }) {
   const colorContext = useContext(ColorThemeContext);
   return (
     <div className="flex gap-10 justify-between items-center px-3">
       <div className="rounded-full overflow-hidden bg-white/10 p-1 border-[0.5px] border-white/40 shadow-whiteBox">
-        <NextLink href="#hero" passHref>
+        <NextLink href="#/" passHref>
           <Logo
             width="50px"
             height="50px"
@@ -63,7 +75,11 @@ function WebNavbar() {
   );
 }
 
-export function MobileNav() {
+export function MobileNav({
+  navs,
+}: {
+  navs: { text: string; href: string }[];
+}) {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const dropDownRef = useRef<HTMLDivElement>(null);
@@ -75,9 +91,15 @@ export function MobileNav() {
 
   return (
     <div className="pt-3 flex w-full justify-between">
-      <NextLink href="#hero" passHref>
-        <Logo width="50px" height="50px" color={colorContext.colorThemeColor} />
-      </NextLink>
+      <div className="rounded-full overflow-hidden bg-white/10 p-1 border-[0.5px] border-white/40 shadow-whiteBox">
+        <NextLink href="#/" passHref>
+          <Logo
+            width="50px"
+            height="50px"
+            color={colorContext.colorThemeColor}
+          />
+        </NextLink>
+      </div>
       <Hamburger
         isHamburgerOpen={isHamburgerOpen}
         setIsHamburgerOpen={setIsHamburgerOpen}
@@ -175,7 +197,7 @@ export function Hamburger({
   return (
     <button
       onClick={handleHamburgerClick}
-      className="flex flex-col justify-center gap-2 items-center"
+      className="flex flex-col justify-center gap-2 items-center pb-3"
     >
       <motion.div
         className="w-16 h-2 bg-white/50 rounded-full"

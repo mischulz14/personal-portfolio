@@ -1,28 +1,27 @@
 import { ColorThemeContext } from '@/context/ColorThemeContextProvider';
-import Image from 'next/image';
-import NextImage from 'next/image';
-import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
 import { useContext } from 'react';
 
 const Hero = () => {
+  const { t } = useTranslation();
   const colorContext = useContext(ColorThemeContext);
   return (
-    <div className="flex relative -mt-20 sm:mt-0">
+    <div className="flex relative -mt-20">
       <div>
         <h1
           data-cy="homePageTitle"
-          className="pl-10 sm:pl-0 mb-6 text-3xl font-semi sm:px-0 title"
+          className="pl-10 sm:pl-0 mb-6 sm:text-3xl text-xl font-semi sm:px-0 title"
         >
           <span className="inline-block py-2 text-effect font-bold">Hi,</span>{' '}
-          I&rsquo;m Michael!
+          {t('common:I-am')}
         </h1>
-        <p className="text-center sm:text-start text-md sm:text-lg description pr-2 sm:pr-0">
-          I&rsquo;m a software developer from Vienna, nice to meet you!
+        <p className="text-center sm:text-start sm:text-md text-sm sm:text-lg description pr-2 sm:pr-0">
+          {t('common:I-am-description')}
         </p>
       </div>
       <div className="relative h-full w-full">
         <svg
-          className="scale-150 pb-20"
+          className="scale-150"
           viewBox="0 0 200 200"
           xmlns="http://www.w3.org/2000/svg"
         >

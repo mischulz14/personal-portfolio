@@ -3,6 +3,7 @@ import {
   MemoryCardContext,
 } from '@/context/MemoryGameContextProvider';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'next-i18next';
 import { useContext, useEffect, useState } from 'react';
 import { useLocalStorage } from 'react-use';
 
@@ -10,6 +11,7 @@ import Button from '../ui/Button';
 import MemoryCard from './MemoryCard';
 
 export default function MemoryCardContainer() {
+  const { t } = useTranslation('common');
   const memoryGameContext = useContext(MemoryCardContext);
   const [memoryCards, setMemoryCards] = useState<MemoryCardType[]>([]);
   const [triesInLocalStorage] = useLocalStorage('tries');
@@ -20,10 +22,13 @@ export default function MemoryCardContainer() {
 
   return (
     <>
-      <div className="flex justify-between w-full px-6">
-        <p>Tries: {memoryGameContext.tries}</p>
+      <div className="flex sm:flex-row flex-col justify-between w-full px-6">
         <p>
-          HighScore: {triesInLocalStorage ? Number(triesInLocalStorage) : 0}
+          {t('tries')}: {memoryGameContext.tries}
+        </p>
+        <p>
+          {t('least-tries')}:{' '}
+          {triesInLocalStorage ? Number(triesInLocalStorage) : 0}
         </p>
       </div>
       <motion.div
@@ -44,7 +49,7 @@ export default function MemoryCardContainer() {
         }}
         type="tertiary"
       >
-        Back
+        {t('back')}
       </Button>
     </>
   );

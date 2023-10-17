@@ -5,6 +5,7 @@ import {
 } from '@/context/ColorThemeContextProvider';
 import { motion } from 'framer-motion';
 import { XOutline } from 'heroicons-react';
+import { useTranslation } from 'next-i18next';
 import { useContext, useRef, useState } from 'react';
 import { useClickAway } from 'react-use';
 
@@ -19,6 +20,7 @@ export default function ChangeColorThemeDropdown({
   const dropDownRef = useRef<HTMLDivElement>(null);
   const colorContext = useContext(ColorThemeContext);
   const colors = Object.keys(colorCodes) as ColorOptions[];
+  const { t } = useTranslation();
 
   useClickAway(dropDownRef, () => {
     setIsDropdownOpen(false);
@@ -39,8 +41,7 @@ export default function ChangeColorThemeDropdown({
         }
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
-        {' '}
-        Change Theme
+        {t('common:change-theme')}
       </button>
       {isDropdownOpen && (
         <>
@@ -93,6 +94,7 @@ export function ColorThemeItem({
   isInWebNav: boolean;
   onClick: () => void;
 }) {
+  const { t } = useTranslation('common');
   const colorContext = useContext(ColorThemeContext);
   const colorCode = colorCodes[color];
   return (
@@ -111,7 +113,7 @@ export function ColorThemeItem({
         className="w-3 h-3 rounded-full"
         style={{ backgroundColor: colorCode.primary }}
       />
-      {isInWebNav && <span>{color.toLocaleUpperCase()}</span>}
+      {isInWebNav && <span>{t(color).toLocaleUpperCase()}</span>}
     </button>
   );
 }

@@ -1,7 +1,7 @@
 import { ColorThemeContext } from '@/context/ColorThemeContextProvider';
 import { motion } from 'framer-motion';
 import { ChevronDown, ChevronUp } from 'heroicons-react';
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 interface AccordionProps {
   additionalButton?: React.ReactNode;
@@ -9,7 +9,8 @@ interface AccordionProps {
   boldTitle?: boolean;
   children: React.ReactNode;
   customButton?: React.ReactNode | undefined;
-  title: string;
+  title: string | React.ReactNode;
+  className?: string;
 }
 
 /* Accordion component
@@ -29,6 +30,7 @@ export default function Accordion({
   badge,
   customButton,
   additionalButton,
+  className,
 }: AccordionProps) {
   const [open, setOpen] = useState(false);
   const colorContext = useContext(ColorThemeContext);
@@ -36,7 +38,7 @@ export default function Accordion({
   return (
     <>
       <div
-        className="flex justify-between rounded-md px-6 py-4 items-center border-2 border-transparent text-gray-200 bg-opacity-60"
+        className={`flex justify-between rounded-md px-6 py-4 items-center border-2 border-transparent text-gray-200 bg-opacity-60 ${className}`}
         onClick={() => {
           setOpen((prev) => !prev);
         }}

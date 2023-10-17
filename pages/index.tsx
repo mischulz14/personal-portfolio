@@ -1,6 +1,6 @@
 import { projects } from '@/components/sections/Projects';
-import { techStackImages } from '@/components/sections/TechStack';
 import Loader from '@/components/ui/Loader';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useEffect, useState } from 'react';
 
 import Home from '../components/Home';
@@ -9,7 +9,7 @@ export default function Page() {
   const [areImagesLoaded, setAreImagesLoaded] = useState(false);
 
   const projectImagePaths = projects.map((project) => project.logoSrc);
-  const techStackImagePaths = techStackImages.map((image) => image.src);
+  const techStackImagePaths = getTechstackImages().map((image) => image.src);
 
   /**
    * This useEffect is used to preload all the images that are used in the website. This is done so that the images are loaded before the website is rendered. I hate when you can see how an image gets rendered on the page ... it's just ugly.
@@ -42,4 +42,34 @@ export default function Page() {
   }, []);
 
   return <>{areImagesLoaded ? <Home /> : <Loader />}</>;
+}
+
+export async function getStaticProps({ locale }: any) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common', 'footer'])),
+      // Will be passed to the page component as props
+    },
+  };
+}
+
+const techStackImages = [
+  { src: '/html.svg', alt: 'HTML' },
+  { src: '/css.svg', alt: 'CSS' },
+  { src: '/tailwind.svg', alt: 'TailwindCSS' },
+  { src: '/sass.svg', alt: 'Sass' },
+  { src: '/js.svg', alt: 'Javascript' },
+  { src: '/typescript.svg', alt: 'Typescript' },
+  { src: '/node.svg', alt: 'Node' },
+  { src: '/GraphQLLogo.svg', alt: 'GraphQL' },
+  { src: '/prisma.svg', alt: 'Prisma' },
+  { src: '/postgres.svg', alt: 'PostgreSQL' },
+  { src: '/react.svg', alt: 'React' },
+  { src: '/next.svg', alt: 'NextJS' },
+  { src: '/git.svg', alt: 'Git' },
+  { src: '/github.svg', alt: 'Github' },
+];
+
+function getTechstackImages() {
+  return techStackImages;
 }

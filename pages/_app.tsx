@@ -2,11 +2,12 @@ import '@/styles/globals.css';
 
 import ColorThemeProvider from '@/context/ColorThemeContextProvider';
 import MemoryCardContextProvider from '@/context/MemoryGameContextProvider';
+import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
 
 import Layout from '../components/layout/Layout';
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <Layout>
       <ColorThemeProvider>
@@ -17,3 +18,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </Layout>
   );
 }
+
+export default appWithTranslation(App);

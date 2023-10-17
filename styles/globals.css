@@ -20,6 +20,8 @@ body {
     var(--bg-theme-color) 30%,
     rgba(0, 0, 0, 1) 80%
   );
+  height: 100vh;
+  width: 100vw;
 }
 
 .shadow-white {

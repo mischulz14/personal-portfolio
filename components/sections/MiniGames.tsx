@@ -3,17 +3,21 @@ import {
   MemoryCardContext,
 } from '@/context/MemoryGameContextProvider';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'next-i18next';
 import { useContext, useEffect, useState } from 'react';
 
 import MemoryCard from '../games/MemoryCard';
 import MemoryCardContainer from '../games/MemoryCardContainer';
+import PatternMatch from '../games/PatternMatch';
+import PatternMatchExplication from '../games/PatternMatchExplication';
 import Button from '../ui/Button';
 
 export default function MiniGames() {
   const memoryGameContext = useContext(MemoryCardContext);
 
+  const { t } = useTranslation('common');
   const [renderedComponent, setRenderedComponent] = useState<
-    'memory' | 'win' | 'home'
+    'memory' | 'win' | 'home' | 'patterns'
   >('home');
 
   useEffect(() => {
@@ -32,9 +36,11 @@ export default function MiniGames() {
     >
       {renderedComponent === 'home' && (
         <>
-          <h3 className="text-effect sm:text-2xl text-xl pb-1 ">Bored?</h3>
-          <p className="pb-3">Play some Minigames:</p>
-          <div className="sm:h-64 sm:w-96 p-10 shadow-whiteBox rounded-lg flex flex-col items-center justify-center gap-6">
+          <h3 className="text-effect sm:text-2xl text-xl pb-1 ">
+            {t('bored?')}
+          </h3>
+          <p className="pb-3">{t('play-minigames')}</p>
+          <div className="sm:h-64 sm:w-96 p-10 shadow-whiteBox rounded-lg flex flex-col items-stretch justify-center gap-6">
             <Button
               type="primary"
               onClick={() => {
@@ -45,11 +51,24 @@ export default function MiniGames() {
             >
               Memory
             </Button>
-            <button>More coming soon...</button>
+            <Button
+              type="primary"
+              onClick={() => {
+                memoryGameContext.setGoBackToHome(false);
+                memoryGameContext.setIsYouWinScreenShown(false);
+                setRenderedComponent('patterns');
+              }}
+            >
+              Pattern Match
+            </Button>
+            <div className="text-center">{t('soon')}</div>
           </div>
         </>
       )}
       {renderedComponent === 'memory' && <MemoryCardContainer />}
+      {renderedComponent === 'patterns' && (
+        <PatternMatchExplication setRenderedComponent={setRenderedComponent} />
+      )}
       {renderedComponent === 'win' && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -57,14 +76,15 @@ export default function MiniGames() {
           exit={{ opacity: 0 }}
           className="flex flex-col justify-center items-center gap-6 p-10 shadow-whiteBox rounded-lg"
         >
-          <p className="font-bold text-2xl">You Won!</p>
+          <p className="font-bold text-xl">Game Over.</p>
+          <p className="font-bold">{t('not-bored')}</p>
           <Button
             type="primary"
             onClick={() => {
               setRenderedComponent('home');
             }}
           >
-            Back to Minigame selection
+            {t('back-to-minigames')}
           </Button>
         </motion.div>
       )}

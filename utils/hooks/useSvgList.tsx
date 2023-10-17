@@ -30,44 +30,58 @@ export default function useSvgList() {
     {
       svgElement: <TailwindSvg color={colorContext.colorThemeColor} />,
       alt: 'TailwindCSS',
+      href: 'https://tailwindcss.com/',
     },
     // { svgElement: '/sass.svg', alt: 'Sass' },
     {
       svgElement: <JavascriptSvg color={colorContext.colorThemeColor} />,
       alt: 'Javascript',
+      href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
     },
     {
       svgElement: <TypescriptSvg color={colorContext.colorThemeColor} />,
       alt: 'Typescript',
+      href: 'https://www.typescriptlang.org/',
     },
     {
       svgElement: <NodeSvg color={colorContext.colorThemeColor} />,
       alt: 'Node',
+      href: 'https://nodejs.org/en/',
     },
     {
       svgElement: <GraphQLSvg color={colorContext.colorThemeColor} />,
       alt: 'GraphQL',
+      href: 'https://graphql.org/',
     },
     {
       svgElement: <PrismaSvg color={colorContext.colorThemeColor} />,
       alt: 'Prisma',
+      href: 'https://www.prisma.io/',
     },
     {
       svgElement: <PostgresSvg color={colorContext.colorThemeColor} />,
       alt: 'PostgreSQL',
+      href: 'https://www.postgresql.org/',
     },
     {
       svgElement: <ReactSvg color={colorContext.colorThemeColor} />,
       alt: 'React',
+      href: 'https://react.dev/',
     },
     {
       svgElement: <NextSvg color={colorContext.colorThemeColor} />,
       alt: 'NextJS',
+      href: 'https://nextjs.org/',
     },
-    { svgElement: <GitSvg color={colorContext.colorThemeColor} />, alt: 'Git' },
+    {
+      svgElement: <GitSvg color={colorContext.colorThemeColor} />,
+      alt: 'Git',
+      href: 'https://git-scm.com/',
+    },
     {
       svgElement: <GitHubSvg color={colorContext.colorThemeColor} />,
       alt: 'Github',
+      href: 'https://github.com/mischulz14',
     },
   ];
 
