@@ -6,7 +6,7 @@ import PatternMatch from './PatternMatch';
 
 export interface PatternMatchProps {
   setRenderedComponent: React.Dispatch<
-    React.SetStateAction<'memory' | 'win' | 'home' | 'patterns'>
+    React.SetStateAction<'memory' | 'gameover' | 'home' | 'patterns'>
   >;
 }
 

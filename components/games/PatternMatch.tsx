@@ -22,7 +22,7 @@ const generateRandomTiles = (numTiles: number) => {
 export interface PatternMatchProps {
   setShowPatternMatch: React.Dispatch<React.SetStateAction<boolean>>;
   setRenderedComponent: React.Dispatch<
-    React.SetStateAction<'memory' | 'win' | 'home' | 'patterns'>
+    React.SetStateAction<'memory' | 'gameover' | 'home' | 'patterns'>
   >;
 }
 
@@ -114,7 +114,7 @@ export default function PatternMatch({
     if (gameOver) {
       setTimeout(() => {
         setNewLeastTriesInLocalStorage();
-        setRenderedComponent('win');
+        setRenderedComponent('gameover');
         resetGameState();
       }, 100);
       return;
