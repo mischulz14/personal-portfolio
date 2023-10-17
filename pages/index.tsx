@@ -1,6 +1,5 @@
 import { projects } from '@/components/sections/Projects';
 import Loader from '@/components/ui/Loader';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useEffect, useState } from 'react';
 
 import Home from '../components/Home';
@@ -32,7 +31,7 @@ export default function Page() {
           image.onload = () => {
             setTimeout(() => {
               resolve(image);
-            }, 2000);
+            }, 1000);
           };
           image.onerror = () => reject();
         });
@@ -42,15 +41,6 @@ export default function Page() {
   }, []);
 
   return <>{areImagesLoaded ? <Home /> : <Loader />}</>;
-}
-
-export async function getStaticProps({ locale }: any) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common', 'footer'])),
-      // Will be passed to the page component as props
-    },
-  };
 }
 
 const techStackImages = [
