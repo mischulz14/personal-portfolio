@@ -194,8 +194,8 @@ function triggerGameOverActions(
   setTimeout(() => {
     // check if the tries in the local storage is less than the current tries
     // @ts-ignore
-    if (triesInLocalStorage === 0 || triesInLocalStorage > tries) {
-      setTriesInLocalStorage(tries);
+    if (triesInLocalStorage === 0 || triesInLocalStorage > tries + 1) {
+      setTriesInLocalStorage(tries + 1);
     }
 
     setIsYouWinScreenShown(true);
