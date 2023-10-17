@@ -5,8 +5,8 @@ import { useLocalStorage } from 'react-use';
 
 import Button from '../ui/Button';
 
-const numRows = 5;
-const numCols = 5;
+const numRows = 4;
+const numCols = 4;
 
 const generateRandomTiles = (numTiles: number) => {
   const tiles = new Set<string>();
@@ -120,9 +120,8 @@ export default function PatternMatch({
       return;
     }
     setTileColors({}); // Reset tile colors
-    const numTiles = level + 2;
+    const numTiles = level + 1;
     setActiveTiles([]);
-    console.log(activeTiles);
     setClickedTiles([]);
     setTimeout(() => {
       setActiveTiles(generateRandomTiles(numTiles));
@@ -248,7 +247,7 @@ function Tile({
 
   return (
     <div
-      className="w-12 h-12 sm:w-16 sm:h-16 border-[0.5px] shadow-whiteBox rounded-lg border-white/30 tile"
+      className="w-16 h-16 border-[0.5px] shadow-whiteBox rounded-lg border-white/30 tile"
       style={{
         backgroundColor:
           showActiveTile && activeTile
