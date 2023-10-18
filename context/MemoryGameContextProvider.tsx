@@ -27,6 +27,8 @@ interface MemoryCardContextType {
   resetGame: () => void;
   isYouWinScreenShown: boolean;
   setIsYouWinScreenShown: (value: boolean) => void;
+  isClickingDeactivated: boolean;
+  setIsClickingDeactivated: (value: boolean) => void;
 }
 
 export const MemoryCardContext = createContext<MemoryCardContextType>({
@@ -41,6 +43,8 @@ export const MemoryCardContext = createContext<MemoryCardContextType>({
   resetGame: () => {},
   isYouWinScreenShown: false,
   setIsYouWinScreenShown: () => {},
+  isClickingDeactivated: false,
+  setIsClickingDeactivated: () => {},
 });
 
 export default function MemoryCardContextProvider({
@@ -59,6 +63,7 @@ export default function MemoryCardContextProvider({
   const [isYouWinScreenShown, setIsYouWinScreenShown] = useState(false);
   const [cards, setCards] = useState<MemoryCard[]>(shuffle(getMemoryCards()));
   let flippedUpCards: MemoryCard[] = [];
+  const [isClickingDeactivated, setIsClickingDeactivated] = useState(false);
 
   useEffect(() => {
     // Initialize local storage value with 0
@@ -73,6 +78,12 @@ export default function MemoryCardContextProvider({
     setTries((prev) => prev + 1);
     setIsCheckingForMatch(true);
 
+    if (!areSameCardsFlipped(flippedUpCards)) {
+      setTimeout(() => {
+        flippedUpCards = [];
+      }, 1000);
+    }
+
     if (areSameCardsFlipped(flippedUpCards)) {
       setResetBoard(false);
       findCardsAndSetThemToIsMatched(cards, flippedUpCards);
@@ -86,19 +97,30 @@ export default function MemoryCardContextProvider({
           setTriesInLocalStorage,
           setIsYouWinScreenShown,
           resetGame,
+          setIsClickingDeactivated,
         );
         return;
       }
 
-      triggerActionsAfterMatch(setIsCheckingForMatch, flippedUpCards);
+      triggerActionsAfterMatch(
+        setIsCheckingForMatch,
+        flippedUpCards,
+        setIsClickingDeactivated,
+      );
       return;
     } else {
-      resetAfterNoMatch(setResetBoard, setIsCheckingForMatch, flippedUpCards);
+      resetAfterNoMatch(
+        setResetBoard,
+        setIsCheckingForMatch,
+        flippedUpCards,
+        setIsClickingDeactivated,
+      );
       return;
     }
   }
 
   function resetGame() {
+    setIsClickingDeactivated(false);
     flippedUpCards = [];
     setIsCheckingForMatch(false);
     cards.forEach((card) => {
@@ -122,6 +144,8 @@ export default function MemoryCardContextProvider({
     resetGame,
     isYouWinScreenShown,
     setIsYouWinScreenShown,
+    isClickingDeactivated,
+    setIsClickingDeactivated,
   };
 
   return (
@@ -161,26 +185,32 @@ function areSameCardsFlipped(flippedUpCards: MemoryCard[]) {
 function triggerActionsAfterMatch(
   setIsCheckingForMatch: (value: boolean) => void,
   flippedUpCards: MemoryCard[] = [],
+  setIsClickingDeactivated: (value: boolean) => void,
 ) {
+  setIsClickingDeactivated(true);
   setTimeout(() => {
     setIsCheckingForMatch(false);
     console.log('winner');
     flippedUpCards = [];
-  }, 800);
+    setIsClickingDeactivated(false);
+  }, 1000);
 }
 
 function resetAfterNoMatch(
   setResetBoard: (value: boolean) => void,
   setIsCheckingForMatch: (value: boolean) => void,
   flippedUpCards: MemoryCard[] = [],
+  setIsClickingDeactivated: (value: boolean) => void,
 ) {
+  setIsClickingDeactivated(true);
   console.log('no match');
   setResetBoard(true);
   setTimeout(() => {
     setIsCheckingForMatch(false);
     flippedUpCards = [];
     setResetBoard(false);
-  }, 700);
+    setIsClickingDeactivated(false);
+  }, 1000);
 }
 
 function triggerGameOverActions(
@@ -190,7 +220,9 @@ function triggerGameOverActions(
   setTriesInLocalStorage: (value: number) => void,
   setIsYouWinScreenShown: (value: boolean) => void,
   resetGame: () => void,
+  setIsClickingDeactivated: (value: boolean) => void,
 ) {
+  setIsClickingDeactivated(true);
   setTimeout(() => {
     // check if the tries in the local storage is less than the current tries
     // @ts-ignore
