@@ -37,6 +37,13 @@ body {
   transition-duration: 2000ms;
 }
 
+/* This is necessary because safari doesnt really render svgs in a correct way: */
+.memory-svg {
+  transform: translateZ(0);
+  will-change: transform;
+  shape-rendering: crispEdges;
+}
+
 /* NAV and texteffects */
 
 .text-effect::after {

@@ -4,7 +4,7 @@ import {
   MemoryCardContext,
 } from '@/context/MemoryGameContextProvider';
 import { motion, useAnimation } from 'framer-motion';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 
 interface MemoryCardProps {
   card: MemoryCard;
@@ -14,12 +14,23 @@ export default function MemoryCard({ card }: MemoryCardProps) {
   const [isCardFlipped, setIsCardFlipped] = useState(false); // State to reverse the animation
   const controls = useAnimation(); // Initialize animation controls
   const [isLocked, setIsLocked] = useState(false); // prevents double clicking on the same card
+  const isMountedRef = useRef(false);
 
   useEffect(() => {
+    isMountedRef.current = true;
+
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isMountedRef.current) return;
     if (card.isMatched) return;
     if (gameContext.resetBoard) {
       setIsCardFlipped(false);
       setTimeout(() => {
+        if (!isMountedRef.current) return;
         controls.start({
           x: 100,
           y: 100,
@@ -79,26 +90,14 @@ export default function MemoryCard({ card }: MemoryCardProps) {
     <div>
       <button
         onClick={handleButtonClick}
-        className={`sm:w-20 sm:h-20 w-16 h-16 shadow-whiteBox overflow-hidden border-[0.5px] border-white/30 rounded-lg flex items-center justify-center relative ${
+        className={`sm:w-20 sm:h-20 w-16 h-16 shadow-whiteBox !overflow-hidden border-[0.5px] border-white/30 rounded-lg flex items-center justify-center relative ${
           !card.isMatched &&
           !isCardFlipped &&
-          'hover:scale-105 hover:border-2 duration-200 transition-all'
+          'hover:scale-105 hover:border-2 duration-200 transition-all !overflow-hidden'
         }`}
       >
         <motion.div
           animate={controls}
-          // onAnimationComplete={() => {
-          //   if (gameContext.resetBoard) {
-          //     setIsCardFlipped(false);
-          //     setIsLocked(false);
-          //     return;
-          //   }
-
-          //   if (gameContext.flippedUpCards.length === 1 && !isCardFlipped) {
-          //     setIsCardFlipped(true);
-          //     return;
-          //   }
-          // }}
           initial={{ x: 100, y: 100, opacity: 0 }} // Initial off-screen position and hidden
           className="sm:w-10 sm:h-10 w-7 h-7 flex justify-center items-center"
         >
