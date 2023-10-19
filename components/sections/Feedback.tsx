@@ -57,9 +57,6 @@ export default function Feedback() {
     createFeedbackMutation,
   );
   const [showThankYouScreen, setShowThankYouScreen] = useState(false);
-  console.log('data', data);
-  console.log('loading', loading);
-  console.log('error', error);
 
   function handleClick() {
     setShowThankYouScreen(true);
@@ -145,7 +142,6 @@ export function ShowFeedback() {
   const calculatedFeedback =
     filterAnswerChoicesAndCalculateTheirPercentage(feedback);
 
-  console.log('feedback', feedback);
   if (loading) {
     return <Loader />;
   }

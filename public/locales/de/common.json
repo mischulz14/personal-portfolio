@@ -57,5 +57,8 @@
   "help-me-feedback": "Hilf mir ein besserer Entwickler zu werden, indem du mir Feedback gibst! Was hat dir an der Seite am Besten gefallen?",
   "the-people-liked": "Das hat Besuchern meiner Seite am meisten gefallen:",
   "send-feedback": "Feedback abschicken",
-  "thanks-for-feedback": "Danke für dein Feedback!"
+  "thanks-for-feedback": "Danke für dein Feedback!",
+  "using-safari": "Hey, du benutzt Safari, oder?",
+  "not-optimized-for-safari": "Bitte beachte, dass diese Webseite nicht für Safari optimiert ist und es zu Problemen kommen könnte. Wenn möglich, verwende bitte einen anderen Browser wie Chrome oder Firefox.",
+  "let-me-in-anyway": "Verstanden! Lass es mich trotzdem sehen, das ist mir egal!"
 }

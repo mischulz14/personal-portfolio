@@ -77,18 +77,18 @@ export default function Home() {
         >
           <MiniGames />
         </section>
-        {/* <section
+        <section
           ref={(el) => (sectionsRef.current[5] = el)}
           id="feedback"
           property="5"
           className="section"
         >
           <Feedback />
-        </section> */}
+        </section>
         <section
-          ref={(el) => (sectionsRef.current[5] = el)}
+          ref={(el) => (sectionsRef.current[6] = el)}
           id="footer"
-          property="5"
+          property="6"
           className="section"
         >
           <Footer />

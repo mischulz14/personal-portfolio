@@ -31,9 +31,6 @@ export default function Navbar({
     { text: t('common:bored'), href: '#games' },
   ];
 
-  useEffect(() => {
-    console.log(scrollYProgress);
-  }, [scrollYProgress]);
   return (
     <>
       <nav
