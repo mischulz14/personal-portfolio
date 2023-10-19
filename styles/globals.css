@@ -41,7 +41,7 @@ body {
 .memory-svg {
   transform: translateZ(0);
   will-change: transform;
-  shape-rendering: crispEdges;
+  shape-rendering: geometricPrecision;
 }
 
 /* NAV and texteffects */
