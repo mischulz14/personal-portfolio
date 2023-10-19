@@ -13,12 +13,13 @@ import {
   contact,
   gamepad,
   hero,
+  like,
   projects,
   techstack,
 } from '../utils/svg/paths';
 
-const paths = [hero, about, techstack, projects, gamepad, contact];
-const colors = ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff'];
+const paths = [hero, about, techstack, projects, gamepad, like, contact];
+const colors = ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff'];
 
 export default function SVGs(props: { pathIndex: number }) {
   const progress = useMotionValue(props.pathIndex);

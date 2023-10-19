@@ -19,7 +19,7 @@ export default function MiniGamesHomescreen({
       <p className="pb-3">{t('play-minigames')}</p>
       <div className="sm:h-64 sm:w-96 p-10 shadow-whiteBox rounded-lg flex flex-col items-stretch justify-center gap-6">
         <Button
-          type="primary"
+          kind="primary"
           onClick={() => {
             memoryGameContext.setGoBackToHome(false);
             memoryGameContext.setIsYouWinScreenShown(false);
@@ -29,7 +29,7 @@ export default function MiniGamesHomescreen({
           Memory
         </Button>
         <Button
-          type="primary"
+          kind="primary"
           onClick={() => {
             memoryGameContext.setGoBackToHome(false);
             memoryGameContext.setIsYouWinScreenShown(false);

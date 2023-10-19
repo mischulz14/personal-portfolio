@@ -20,7 +20,7 @@ export default function PatternMatchExplication({
       {!showPatternMatch && (
         <div className="flex flex-col justify-center items-center gap-4 max-w-sm text-center shadow-whiteBox p-8 rounded-lg">
           <div>{t('pattern-match-description')}</div>
-          <Button onClick={() => setShowPatternMatch(true)} type="secondary">
+          <Button onClick={() => setShowPatternMatch(true)} kind="secondary">
             Start
           </Button>
         </div>

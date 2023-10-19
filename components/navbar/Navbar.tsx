@@ -9,6 +9,12 @@ import { useClickAway } from 'react-use';
 import Logo from '../svgs/Logo';
 import ChangeColorThemeDropdown from './ChangeColorThemeDropdown';
 
+export const springTransition = {
+  type: 'spring',
+  stiffness: 300,
+  damping: 20,
+};
+
 export default function Navbar({
   setHideScrollDiv,
 }: {
@@ -187,12 +193,6 @@ export function Hamburger({
     setIsNavOpen(!isNavOpen);
     setIsHamburgerOpen(!isHamburgerOpen);
   }
-
-  const springTransition = {
-    type: 'spring',
-    stiffness: 300,
-    damping: 20,
-  };
 
   return (
     <button

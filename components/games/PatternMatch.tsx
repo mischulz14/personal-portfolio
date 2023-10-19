@@ -201,7 +201,7 @@ export default function PatternMatch({
         })}
       </div>
       <Button
-        type="tertiary"
+        kind="tertiary"
         onClick={() => {
           setShowPatternMatch(false);
           setRenderedComponent('home');

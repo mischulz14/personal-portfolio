@@ -22,7 +22,7 @@ export default function GameOverScreen({
       <p className="font-bold text-center">{t('didnt-win')}</p>
       <p className="font-bold text-center">{t('not-bored-lost')}</p>
       <Button
-        type="primary"
+        kind="primary"
         onClick={() => {
           setRenderedComponent('home');
         }}

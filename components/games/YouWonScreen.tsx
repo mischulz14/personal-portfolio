@@ -21,7 +21,7 @@ export default function YouWonScreen({
       <p className="font-bold text-xl">{t('you-won')}</p>
       <p className="font-bold text-center">{t('not-bored')}</p>
       <Button
-        type="primary"
+        kind="primary"
         onClick={() => {
           setRenderedComponent('home');
         }}

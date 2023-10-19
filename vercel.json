@@ -1,0 +1,12 @@
+{
+  "builds": [
+    {
+      "src": "/server/src/index.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "env": {
+    "POSTGRES_PRISMA_URL": "@postgres_prisma_url",
+    "POSTGRES_URL_NON_POOLING": "@postgres_url_non_pooling"
+  }
+}

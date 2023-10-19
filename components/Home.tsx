@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Footer from './layout/Footer';
 import Navbar from './navbar/Navbar';
 import About from './sections/About';
+import Feedback from './sections/Feedback';
 import Hero from './sections/Hero';
 import MiniGames from './sections/MiniGames';
 import Projects from './sections/Projects';
@@ -78,8 +79,16 @@ export default function Home() {
         </section>
         <section
           ref={(el) => (sectionsRef.current[5] = el)}
-          id="footer"
+          id="feedback"
           property="5"
+          className="section"
+        >
+          <Feedback />
+        </section>
+        <section
+          ref={(el) => (sectionsRef.current[6] = el)}
+          id="footer"
+          property="6"
           className="section"
         >
           <Footer />

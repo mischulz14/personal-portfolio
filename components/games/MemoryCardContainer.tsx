@@ -47,7 +47,7 @@ export default function MemoryCardContainer() {
           memoryGameContext.resetGame();
           memoryGameContext.setIsYouWinScreenShown(false);
         }}
-        type="tertiary"
+        kind="tertiary"
       >
         {t('back')}
       </Button>

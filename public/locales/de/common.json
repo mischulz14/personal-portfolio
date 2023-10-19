@@ -49,5 +49,13 @@
   "german": "Deutsch (Muttersprache)",
   "spanish": "Spanisch (C1)",
   "french": "Französisch (A2)",
-  "catalan": "Katalanisch (A2)"
+  "catalan": "Katalanisch (A2)",
+  "animations": "Animationen der Seite",
+  "design": "Design der Seite",
+  "minigames": "Minigames",
+  "changeTheme": "Farbthema der Seite ändern",
+  "help-me-feedback": "Hilf mir ein besserer Entwickler zu werden, indem du mir Feedback gibst! Was hat dir an der Seite am Besten gefallen?",
+  "the-people-liked": "Das hat Besuchern meiner Seite am meisten gefallen:",
+  "send-feedback": "Feedback abschicken",
+  "thanks-for-feedback": "Danke für dein Feedback!"
 }

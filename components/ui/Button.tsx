@@ -1,33 +1,33 @@
 import { ColorThemeContext } from '@/context/ColorThemeContextProvider';
 import { useContext } from 'react';
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  type?: 'primary' | 'outlined' | 'secondary' | 'tertiary';
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  className?: string;
-  disabled?: boolean;
+  kind?: 'primary' | 'outlined' | 'secondary' | 'tertiary';
+  // You can remove onClick, disabled, className as they are already part of React.ButtonHTMLAttributes<HTMLButtonElement>
 }
 
 export default function Button({
   children,
-  type,
+  kind,
   onClick,
   disabled,
+  className,
+  ...props
 }: ButtonProps) {
   const colorContext = useContext(ColorThemeContext);
 
   const classNames = () => {
-    if (type === 'primary') {
+    if (kind === 'primary') {
       return `hover:scale-105 text-white py-2 px-4 rounded-lg transition-all duration-200`;
     }
-    if (type === 'secondary') {
+    if (kind === 'secondary') {
       return `bg-transparent border-2 hover:scale-105 text-white  py-2 px-4 rounded-lg transition-all duration-200`;
     }
-    if (type === 'outlined') {
+    if (kind === 'outlined') {
       return `bg-transparent border-[0.5px] hover:scale-105 text-white  py-2 px-4 rounded-lg transition-all duration-200`;
     }
-    if (type === 'tertiary') {
+    if (kind === 'tertiary') {
       return `bg-transparent border-[0.5px] hover:scale-105 text-white/50  py-2 px-4 rounded-lg transition-all duration-200 !border-white/50 text-sm`;
     }
   };
@@ -35,15 +35,16 @@ export default function Button({
   return (
     <>
       <button
+        {...props}
         style={{
           backgroundColor:
-            type === 'primary' ? colorContext.colorThemeColor : 'transparent',
+            kind === 'primary' ? colorContext.colorThemeColor : 'transparent',
           borderColor:
-            type === 'secondary' ? colorContext.colorThemeColor : 'white',
+            kind === 'secondary' ? colorContext.colorThemeColor : 'white',
         }}
         disabled={disabled}
         onClick={onClick}
-        className={classNames()}
+        className={`${classNames()} ${className}`}
       >
         {children}
       </button>
