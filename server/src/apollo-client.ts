@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 const createApolloClient = () => {
   return new ApolloClient({
-    uri: 'https://personal-portfolio-gi9v3oj56-mischulz14.vercel.app',
+    uri: process.env.NEXT_PUBLIC_GRAPHQL_SERVER_URL || 'http://localhost:4000',
     cache: new InMemoryCache(),
   });
 };
