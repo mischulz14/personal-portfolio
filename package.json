@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "server": "nodemon --exec ts-node server/src/index.ts",
     "build": "next build",
-    "start": "next start",
+    "start": "node server/src/index.ts",
     "lint": "next lint"
   },
   "dependencies": {
@@ -17,6 +16,7 @@
     "@types/react": "18.2.25",
     "@types/react-dom": "18.2.11",
     "apollo-server": "^3.12.1",
+    "apollo-server-micro": "^3.12.1",
     "autoprefixer": "10.4.16",
     "dayjs": "^1.11.10",
     "eslint": "8.51.0",

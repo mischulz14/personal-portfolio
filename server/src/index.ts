@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
-import { ApolloServer } from 'apollo-server';
+// pages/api/graphql.js or pages/api/graphql.ts
+import { ApolloServer, gql } from 'apollo-server-micro';
 
 import { CreateFeedbackInput } from '../types/graphqlTypes';
 import { typeDefs } from './schema';
@@ -26,15 +27,16 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({
-  resolvers,
+const apolloServer = new ApolloServer({
   typeDefs,
+  resolvers,
   introspection: true,
 });
 
-async function start() {
-  const { url } = await server.listen({ port: 4000 });
-  console.log(`🚀 Apollo Server is running at ${url}`);
-}
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 
-start();
+export default apolloServer.createHandler({ path: '/api/graphql' });
