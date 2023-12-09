@@ -14,10 +14,21 @@ interface ContactFormProps {
   setHideNav: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+const profanityRegex =
+  /(\b(f+[\*u]+ck|sh[\*i]+t|b[\*i]+tch|a[\*s]+hole|c[\*u]+nt|d[\*i]+ck|p[\*i]+ss|v[\*a]+gina|p[\*e]+nis|s[\*o]+n[\*o]+f[\*a]+[\*b]+[\*i]+tch)\b|\b(schei[\*ß]+e|verdammt|arschloch|hurensohn|missgeburt|wichser|wixxer|wixer|retard)\b)/gi;
+
 const schema = yup
   .object({
     name: yup.string().required(),
-    message: yup.string().max(200).required(),
+    message: yup
+      .string()
+      .max(200)
+      .required()
+      .test(
+        'no-profanity',
+        'Profanity is not allowed',
+        (value) => !profanityRegex.test(value),
+      ),
     contactInfoOther: yup.string().optional().max(100),
   })
   .required();
