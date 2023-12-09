@@ -61,5 +61,12 @@
   "thanks-for-feedback": "Thank you for your feedback!",
   "using-safari": "Hey there, you're using Safari, right?",
   "not-optimized-for-safari": "Please keep in mind that this website is not optimized for Safari and you may experience some issues. If you can please use another browser like Chrome or Firefox.",
-  "let-me-in-anyway": "Got it! Let me in anyway, I don't care!"
+  "let-me-in-anyway": "Got it! Let me in anyway, I don't care!",
+  "ball-description": "Website and booking tool for tickets of the 'Althietzingerball', a ball that is held every year in Vienna. Additionally to visiting the site and check the most important information, the user can send a booking request for tickets to the host, which gets handled by the custom-built API.",
+  "ball-role": "Conception and implementation of the entire freelance project as a solo fullstack developer. Creation of the UI/UX design + user journeys. Development of the front- and backend including deployment and SEO. Communication with project managers and implementation of requested features. ",
+  "contact": "Contact",
+  "name": "Name",
+  "message": "Message",
+  "submit": "Submit",
+  "contact-me": "I am always open to new opportunities and projects. If you have any questions or just want to say hi, feel free to contact me!"
 }

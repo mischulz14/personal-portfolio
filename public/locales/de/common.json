@@ -15,7 +15,7 @@
   "ava-description": "AvaAssist verbindet Menschen mit Behinderungen mit persönlichen Assistent:innen. Es bietet auch eine Plattform für Organisationen, um ihre persönlichen Assistent:innen und Kund:innen zu verwalten.",
   "cleanly-description": "Cleanly ist eine Webanwendung, die es Nutzer:innen ermöglicht, Reinigungsdienste online zu buchen. Sie wird derzeit nicht gewartet.",
   "origame-description": "Ein Mockup eines E-Commerce-Shops. Er verfügt über einen voll funktionsfähigen Warenkorb und einen Checkout-Prozess, jedoch ohne Zahlungsfunktion.",
-  "ava-role": "Rolle als Fullstack-Entwickler in einem kleinen Entwicklungsteam das verschiedene Technologien implementiert. Konzeption neuer Features, UI/UX-Design in Figma, Design und Entwicklung des Frontends und Backends, Schreiben von Tests, Deployment und Erstellung von Dokumentationen.",
+  "ava-role": "Fullstack-Entwickler in einem kleinen Entwicklungsteam das verschiedene Technologien implementiert. Konzeption neuer Features, UI/UX-Design in Figma, Design und Entwicklung des Frontends und Backends, Schreiben von Tests, Deployment und Erstellung von Dokumentationen.",
   "cleanly-role": "Fullstack-Developer-Projekt, das verschiedene Technologien implementiert. Konzeption des gesamten Projekts einschließlich der User journeys, UI/UX-Design in Figma, Datenbankdesign, Entwicklung des Frontends und Backends, Schreiben von Tests und Deployment des Projekts.",
   "origame-role": "Fullstack-Developer-Projekt, das verschiedene Technologien implementiert. Konzeption des gesamten Projekts einschließlich Design und Entwicklung des Frontends und Backends, Schreiben von Tests und Deployment des Projekts.",
   "check-it": "Schau's dir mal an",
@@ -60,5 +60,12 @@
   "thanks-for-feedback": "Danke für dein Feedback!",
   "using-safari": "Hey, du benutzt Safari, oder?",
   "not-optimized-for-safari": "Bitte beachte, dass diese Webseite nicht für Safari optimiert ist und es zu Problemen kommen könnte. Wenn möglich, verwende bitte einen anderen Browser wie Chrome oder Firefox.",
-  "let-me-in-anyway": "Verstanden! Lass es mich trotzdem sehen, das ist mir egal!"
+  "let-me-in-anyway": "Verstanden! Lass es mich trotzdem sehen, das ist mir egal!",
+  "ball-description": "Website und Buchungstool für Tickets des Althietzingerballs, ein Ball der jedes Jahr in Wien stattfindet. User können die Seite nicht nur besuchen um auf die neuesten Informationen zuzugreifen, sondern auch Logen- und Ticketanfragen senden.",
+  "ball-role": "Konzeption und Umsetzung des Freelance-Projekts als Solo-Fullstack-Developer von Anfang bis Ende. Erstellung des UI/UX Designs + User Journeys. Frontend- und Backendseitige Entwicklung inklusive Deployment und SEO.",
+  "contact": "Kontakt",
+  "name": "Name",
+  "message": "Nachricht",
+  "submit": "Abschicken",
+  "contact-me": "Ich bin immer offen für neue Möglichkeiten und Projekte. Wenn du Fragen hast oder einfach nur Hallo sagen willst, zögere nicht, mich zu kontaktieren!"
 }
