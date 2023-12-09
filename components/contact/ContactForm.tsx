@@ -94,15 +94,23 @@ export function Form({
     resolver: yupResolver(schema),
   });
   const onSubmit = (data: FormData) => {
-    handleSubmitEmail(data.name, data.message);
+    handleSubmitEmail(
+      data.name,
+      data.message,
+      data.contactInfoOther ? data.contactInfoOther : '',
+    );
   };
 
   const form = useRef(null) as React.MutableRefObject<HTMLFormElement | null>;
 
-  const handleSubmitEmail = async (name: string, message: string) => {
+  const handleSubmitEmail = async (
+    name: string,
+    message: string,
+    contactInfo: string | undefined,
+  ) => {
     setIsLoading && setIsLoading(true);
     const response = await axios.post('api/send-email', {
-      data: getFeedbackHTMLTemplate(name, message),
+      data: getFeedbackHTMLTemplate(name, message, contactInfo),
     });
     if (response.request.status === 200) {
       console.log('Emails sent successfully!');
@@ -192,9 +200,15 @@ export function Success({
   );
 }
 
-function getFeedbackHTMLTemplate(name: string, message: string) {
+function getFeedbackHTMLTemplate(
+  name: string,
+  message: string,
+  contactInfo?: string,
+) {
   return `<h3>Neues Feedback von ${name}</h3>
     <p>Feedback: </p>
     <p>${message}</p>
+    <p>Kontaktinformationen: </p>
+    <p>${contactInfo}</p>
   `;
 }
