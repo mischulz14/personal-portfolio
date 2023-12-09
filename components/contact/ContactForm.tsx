@@ -54,8 +54,8 @@ export function Success({
   const { t } = useTranslation();
   return (
     <div className="flex flex-col gap-2 max-w-md">
-      <h3 className="pt-2 text-lg">Thanks for your message!</h3>
-      <p className="pb-3">I will get back to you as soon as possible.</p>
+      <h3 className="pt-2 text-lg">{t('message-thanks')}</h3>
+      <p className="pb-3">{t('get-back')}</p>
       <Button
         onClick={() => {
           setIsContactFormOpen(false);
@@ -105,10 +105,7 @@ export function Form({
   return (
     <div className="flex flex-col gap-2 max-w-md p-3">
       <h3 className="pt-2 text-lg">{t('contact')}</h3>
-      <p className="pb-3">
-        I am always open to new opportunities and projects. If you have any
-        questions or just want to say hi, feel free to contact me!
-      </p>
+      <p className="pb-3">{t('contact-text')}</p>
       <form
         ref={form}
         className="flex flex-col gap-2 max-w-md"

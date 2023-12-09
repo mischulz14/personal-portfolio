@@ -61,7 +61,7 @@ export default function Contact() {
               onClick={() => setIsContactFormOpen(true)}
               className="underline"
             >
-              Click here to contact me
+              {t('contact-me-button')}
             </Button>
           </Accordion>
           {basicInfo.map((info) => (
