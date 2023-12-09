@@ -9,8 +9,8 @@ export default function Projects() {
   const projectsArray = getProjects().map((project) => (
     <ProjectCard
       title={project.title}
-      description={project.description}
       role={project.role}
+      description={project.description}
       techstack={project.techstack}
       link={project.link}
       logoSrc={project.logoSrc}
@@ -67,22 +67,38 @@ export const projects = [
     logoSrc: '/ava.svg',
   },
   {
-    title: 'Cleanly',
-    description: 'cleanly-description',
-    role: 'cleanly-role',
+    title: 'Ball der Althietzinger',
+    description: 'ball-description',
+    role: 'ball-role',
     techstack: [
       'React',
       'NextJS',
       'TailwindCSS',
       'Node',
-      'PostgreSQL',
       'Typescript',
       'Git',
       'Github',
     ],
-    link: 'https://cleanly.fly.dev/',
-    logoSrc: '/cleanly.svg',
+    link: 'http://hietzingerball.at',
+    logoSrc: '/TaenzerSvg.svg',
   },
+  // {
+  //   title: 'Cleanly',
+  //   description: 'cleanly-description',
+  //   role: 'cleanly-role',
+  //   techstack: [
+  //     'React',
+  //     'NextJS',
+  //     'TailwindCSS',
+  //     'Node',
+  //     'PostgreSQL',
+  //     'Typescript',
+  //     'Git',
+  //     'Github',
+  //   ],
+  //   link: 'https://cleanly.fly.dev/',
+  //   logoSrc: '/cleanly.svg',
+  // },
   {
     title: 'OrigaME Ecommerce',
     description: 'origame-description',

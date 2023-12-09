@@ -25,13 +25,22 @@ export default function ProjectCard({
   const techStackImages = useSvgList();
   const { t } = useTranslation();
 
+  const widthAndHeight = role === 'ball-role' ? 120 : 40;
+  const imgNeedsBackground = role === 'ball-role';
+
   return (
     <div className="flex flex-col gap-2 items-stretch p-4 my-4 w-[320px] sm:w-full rounded-lg  shadow-whiteBox">
       <div className="flex w-full justify-center gap-4 items-center mb-2">
         <h2 className="text-xl font-bold flex justify-center items-center text-center text-white">
           {title}
         </h2>
-        <Image src={logoSrc} alt={title} width={40} height={40} />
+        <Image
+          className={imgNeedsBackground ? 'bg-white/20 p-1 rounded-lg' : ''}
+          src={logoSrc}
+          alt={title}
+          width={widthAndHeight}
+          height={widthAndHeight}
+        />
       </div>
 
       <Accordion title={t('common:description')}>
