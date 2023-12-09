@@ -1,7 +1,7 @@
 import { ColorThemeContext } from '@/context/ColorThemeContextProvider';
 import { CreateFeedbackInput } from '@/server/types/graphqlTypes';
 import { gql, useMutation, useQuery } from '@apollo/client';
-import { Feedback } from '@prisma/client';
+import type { Feedback } from '@prisma/client';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { useContext, useState } from 'react';

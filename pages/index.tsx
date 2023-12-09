@@ -23,6 +23,7 @@ export default function Page() {
   const techStackImagePaths = getTechstackImages().map((image) => image.src);
 
   useEffect(() => {
+    // Here I check if the user is using Safari. If so, I set the browserName state to Safari. This is used to display a warning message to the user that the website is not optimized for Safari.
     const userAgent = navigator.userAgent;
     setBrowserName(getBrowserName(userAgent));
   }, []);

@@ -35,7 +35,7 @@ export default function Navbar({
     <>
       <nav
         onClick={() => setHideScrollDiv(true)}
-        className="xl:block fixed hidden w-full z-[9999] px-20 py-4"
+        className="xl:block fixed hidden w-full z-30 px-20 py-4"
       >
         {' '}
         {/* z-[9999] is used to make sure that the navbar is always on top of everything else and the links can be clicked */}
@@ -43,7 +43,7 @@ export default function Navbar({
       </nav>
       <nav
         onClick={() => setHideScrollDiv(true)}
-        className="xl:hidden fixed w-full z-[9999] px-8 py-4"
+        className="xl:hidden fixed w-full z-30 px-8 py-4"
       >
         <MobileNav navs={navs} />
       </nav>
@@ -93,7 +93,7 @@ export function MobileNav({
   };
 
   return (
-    <div className="pt-3 flex w-full justify-between">
+    <div className="pt-3 flex w-full z-20 justify-between">
       <div className="rounded-full overflow-hidden bg-white/10 p-1 border-[0.5px] border-white/40 shadow-whiteBox">
         <NextLink href="#/" passHref>
           <Logo

@@ -1,9 +1,9 @@
 import { motion, useScroll } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
 
-import Footer from './layout/Footer';
 import Navbar from './navbar/Navbar';
 import About from './sections/About';
+import Footer from './sections/Contact';
 import Feedback from './sections/Feedback';
 import Hero from './sections/Hero';
 import MiniGames from './sections/MiniGames';
@@ -29,7 +29,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden relative">
       <Navbar setHideScrollDiv={setHideScrollDiv} />
       <div
         className="relative h-screen w-screen main snap-mandatory snap-y overflow-auto"
