@@ -7,7 +7,11 @@ import ContactForm from '../contact/ContactForm';
 import Accordion from '../ui/Accordion';
 import Button from '../ui/Button';
 
-export default function Contact() {
+export default function Contact({
+  setHideNav,
+}: {
+  setHideNav: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const year = new Date().getFullYear();
   const { t } = useTranslation('common');
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
@@ -40,7 +44,7 @@ export default function Contact() {
   ];
 
   return (
-    <div className="relative w-screen h-screen flex justify-center items-center">
+    <>
       <div className="flex items-center flex-col max-w-xs relative">
         <h2 className="max-w-fit-content self-center mb-3 text-center text-xl font-semibold">
           {t('contact-info')}
@@ -58,7 +62,10 @@ export default function Contact() {
             }
           >
             <Button
-              onClick={() => setIsContactFormOpen(true)}
+              onClick={() => {
+                setIsContactFormOpen(true);
+                setHideNav(true);
+              }}
               className="underline"
             >
               {t('contact-me-button')}
@@ -94,8 +101,11 @@ export default function Contact() {
         </div>
       </div>
       {isContactFormOpen && (
-        <ContactForm setIsContactFormOpen={setIsContactFormOpen} />
+        <ContactForm
+          setHideNav={setHideNav}
+          setIsContactFormOpen={setIsContactFormOpen}
+        />
       )}
-    </div>
+    </>
   );
 }

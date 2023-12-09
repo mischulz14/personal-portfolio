@@ -1,10 +1,8 @@
-import { motion, useScroll } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
 
 import Navbar from './navbar/Navbar';
 import About from './sections/About';
-import Footer from './sections/Contact';
-import Feedback from './sections/Feedback';
+import Contact from './sections/Contact';
 import Hero from './sections/Hero';
 import MiniGames from './sections/MiniGames';
 import Projects from './sections/Projects';
@@ -16,6 +14,7 @@ import ScrollDiv from './ui/ScrollDiv';
 export default function Home() {
   const [pathIndex, setPathIndex] = useState(0);
   const [progressBarPercentage, setProgressbarPercentage] = useState(0);
+  const [hideNav, setHideNav] = useState(false); // used when the user opens the contact form, so the navbar doesn't overlap the contact form (for some reason the z-index doesn't work)
   const [hideScrollDiv, setHideScrollDiv] = useState(false); // this is used to hide the scroll div in the hero when the user is past the first section
   const sectionsRef = useRef<any[]>([]);
 
@@ -30,7 +29,7 @@ export default function Home() {
 
   return (
     <div className="overflow-hidden relative">
-      <Navbar setHideScrollDiv={setHideScrollDiv} />
+      <Navbar hideNav={hideNav} setHideScrollDiv={setHideScrollDiv} />
       <div
         className="relative h-screen w-screen main snap-mandatory snap-y overflow-auto"
         style={{ position: 'sticky', top: 0 }}
@@ -87,11 +86,11 @@ export default function Home() {
         </section> */}
         <section
           ref={(el) => (sectionsRef.current[5] = el)}
-          id="footer"
+          id="contact"
           property="5"
           className="section"
         >
-          <Footer />
+          <Contact setHideNav={setHideNav} />
         </section>
       </div>
       {!hideScrollDiv && <ScrollDiv />}
@@ -100,6 +99,15 @@ export default function Home() {
   );
 }
 
+// UTILS FOR THIS COMPONENT
+
+/**
+ * @param sectionsRef  a ref to all the sections in the main element
+ * @param setPathIndex  a function to set the path index, which is used to determine which svg path to use in the svgs component
+ * @param setProgressbarPercentage  a function to set the percentage, which is used to determine the width of the progressbar in the ProgressBar component
+ * @param setHideScrollDiv  a function to set the hideScrollDiv state, which is used to hide the scroll div in the hero when the user is past the first section
+ * @returns  a function to stop the observer from firing when the component unmounts
+ */
 function triggerSectionAnimationsOnScroll(
   sectionsRef: React.MutableRefObject<any[]>,
   setPathIndex: React.Dispatch<React.SetStateAction<number>>,
@@ -114,18 +122,14 @@ function triggerSectionAnimationsOnScroll(
         if (entry.isIntersecting) {
           // entry is intersecting means that the section is in the viewport, which is the case when the section snaps to the top of the viewport
           setPathIndex(Number(entry.target.getAttribute('property'))); // we set the path index though the property which I specified in the section html tag, which is used to determine which svg path to use in the svgs component
-          const percentage =
-            (Number(entry.target.getAttribute('property')) + 1) /
-            numberOfSections;
-          setProgressbarPercentage(percentage * 100); // I set the percentage, which is used to determine the width of the progressbar in the ProgressBar component
+          handleUpdateProgressBar(
+            entry,
+            numberOfSections,
+            setProgressbarPercentage,
+          );
+          handleUpdateScrollDiv(entry, setHideScrollDiv);
 
           entry.target.classList.add('visible'); // I set the opacity of the section to 1, which is needed because the opacity is set to 0 in the initial state of the section
-
-          if (Number(entry.target.getAttribute('property')) === 1) {
-            setHideScrollDiv(true);
-            // the scroll div is used in the hero to signal that the user should scroll down
-            // if the user is past the first section (which has property 0), the scroll div is hidden
-          }
         } else {
           entry.target.classList.remove('visible'); // remove the visible class from the section, which is needed because the opacity is set to 0 in the initial state of the section
         }
@@ -136,9 +140,39 @@ function triggerSectionAnimationsOnScroll(
     },
   );
 
-  sectionsRef.current.forEach((section) => observer.observe(section));
+  sectionsRef.current.forEach((section) => observer.observe(section)); // we observe each section of the sectionsRef, which is a ref to all the sections in the main element
 
   return () => {
-    sectionsRef.current.forEach((section) => observer.unobserve(section));
+    sectionsRef.current.forEach((section) => observer.unobserve(section)); // this is needed to prevent memory leaks and to stop the observer from firing when the component unmounts. For more info on why you need this in a useEffect hook, see https://react.dev/learn/synchronizing-with-effects#how-to-write-an-effect
   };
+}
+
+/**
+ * @param entry  the entry of the section that is intersecting
+ * @param numberOfSections  the number of sections in the main element
+ * @param setProgressbarPercentage  a function to set the percentage, which is used to determine the width of the progressbar in the ProgressBar component
+ */
+function handleUpdateProgressBar(
+  entry: IntersectionObserverEntry,
+  numberOfSections: number,
+  setProgressbarPercentage: React.Dispatch<React.SetStateAction<number>>,
+) {
+  const percentage =
+    (Number(entry.target.getAttribute('property')) + 1) / numberOfSections;
+  setProgressbarPercentage(percentage * 100); // I set the percentage, which is used to determine the width of the progressbar in the ProgressBar component
+}
+
+/**
+ * @param entry the entry of the section that is intersecting
+ * @param setHideScrollDiv  a function to set the hideScrollDiv state, which is used to hide the scroll div in the hero when the user is past the first section
+ */
+function handleUpdateScrollDiv(
+  entry: IntersectionObserverEntry,
+  setHideScrollDiv: React.Dispatch<React.SetStateAction<boolean>>,
+) {
+  if (Number(entry.target.getAttribute('property')) === 1) {
+    setHideScrollDiv(true);
+    // the scroll div is used in the hero to signal that the user should scroll down
+    // if the user is past the first section (which has property 0), the scroll div is hidden
+  }
 }

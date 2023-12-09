@@ -17,25 +17,31 @@ export const springTransition = {
 
 export default function Navbar({
   setHideScrollDiv,
+  hideNav,
 }: {
   setHideScrollDiv: React.Dispatch<React.SetStateAction<boolean>>;
+  hideNav: boolean;
 }) {
   const { scrollYProgress } = useScroll();
 
   const { t } = useTranslation();
   const navs = [
     { text: t('common:about-me'), href: '#about' },
-    { text: 'Techstack', href: '#stack' },
+    { text: t('contact'), href: '#contact' },
     { text: t('common:projects'), href: '#portfolio' },
     { text: 'Github', href: 'https://github.com/mischulz14' },
     { text: t('common:bored'), href: '#games' },
   ];
 
+  if (hideNav) {
+    return null;
+  }
+
   return (
     <>
       <nav
         onClick={() => setHideScrollDiv(true)}
-        className="xl:block fixed hidden w-full z-30 px-20 py-4"
+        className="xl:block fixed hidden w-full z-20 px-20 py-4"
       >
         {' '}
         {/* z-[9999] is used to make sure that the navbar is always on top of everything else and the links can be clicked */}
@@ -43,7 +49,7 @@ export default function Navbar({
       </nav>
       <nav
         onClick={() => setHideScrollDiv(true)}
-        className="xl:hidden fixed w-full z-30 px-8 py-4"
+        className="xl:hidden fixed w-full z-20 px-8 py-4"
       >
         <MobileNav navs={navs} />
       </nav>
@@ -93,7 +99,7 @@ export function MobileNav({
   };
 
   return (
-    <div className="pt-3 flex w-full z-20 justify-between">
+    <div className="pt-3 flex w-full relative z-20 justify-between">
       <div className="rounded-full overflow-hidden bg-white/10 p-1 border-[0.5px] border-white/40 shadow-whiteBox">
         <NextLink href="#/" passHref>
           <Logo
