@@ -62,6 +62,7 @@ export default function ContactForm({
           setIsSuccessViewOpen={setIsSuccessViewOpen}
           setIsContactFormOpen={setIsContactFormOpen}
           setIsLoading={setIsLoading}
+          setHideNav={setHideNav}
         />
       )}
     </div>
@@ -78,12 +79,14 @@ interface FormProps {
   setIsContactFormOpen: (isOpen: boolean) => void;
   setIsSuccessViewOpen: (isOpen: boolean) => void;
   setIsLoading?: (isLoading: boolean) => void;
+  setHideNav: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export function Form({
   setIsContactFormOpen,
   setIsSuccessViewOpen,
   setIsLoading,
+  setHideNav,
 }: FormProps) {
   const { t } = useTranslation();
   const {
@@ -165,6 +168,7 @@ export function Form({
         <Button
           onClick={() => {
             setIsContactFormOpen(false);
+            setHideNav(false);
           }}
           kind="tertiary"
           type="button"
