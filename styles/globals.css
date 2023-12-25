@@ -12,6 +12,7 @@
 
 body {
   color: white;
+  overscroll-behavior: none;
   @apply font-comfortaa;
   background: rgb(0, 0, 0);
   background: radial-gradient(

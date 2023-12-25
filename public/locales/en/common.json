@@ -72,5 +72,12 @@
   "contact-me-button": "Click here to contact me",
   "message-thanks": "Thank you for your message!",
   "get-back": "I will get back to you as soon as possible.",
-  "contact-info-other": "Your contact info (optional)"
+  "contact-info-other": "Your contact info (optional)",
+  "privacy-policy": "Privacy Policy",
+  "accept-privacy-policy": "Please accept the privacy policy",
+  "nameRequired": "Name is required",
+  "nameMoreThan2": "Name must be at least 2 characters long",
+  "messageRequired": "Message is required",
+  "messageProfanity": "Profanity is not allowed",
+  "privacyPolicyRequired": "The privacy policy must be accepted"
 }

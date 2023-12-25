@@ -38,7 +38,7 @@ export default function Accordion({
   return (
     <>
       <div
-        className={`flex justify-between rounded-md px-6 py-4 items-center border-2 border-transparent text-gray-200 bg-opacity-60 ${className}`}
+        className={`cursor-pointer flex justify-between rounded-md px-6 py-4 items-center border-2 border-transparent text-gray-200 bg-opacity-60 ${className}`}
         onClick={() => {
           setOpen((prev) => !prev);
         }}

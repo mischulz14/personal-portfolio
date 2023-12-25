@@ -1,8 +1,9 @@
 import emailjs from '@emailjs/browser';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
-import { useTranslation } from 'next-i18next';
-import { useRef, useState } from 'react';
+import { TFunction, useTranslation } from 'next-i18next';
+import NextLink from 'next/link';
+import { ReactChild, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
@@ -15,24 +16,36 @@ interface ContactFormProps {
 }
 
 const profanityRegex =
-  /(\b(f+[\*u]+ck|sh[\*i]+t|b[\*i]+tch|a[\*s]+hole|c[\*u]+nt|d[\*i]+ck|p[\*i]+ss|v[\*a]+gina|p[\*e]+nis|s[\*o]+n[\*o]+f[\*a]+[\*b]+[\*i]+tch)\b|\b(schei[\*ß]+e|verdammt|arschloch|hurensohn|missgeburt|wichser|wixxer|wixer|retard)\b)/gi;
+  /(\b(f+[\*u]+ck|sh[\*i]+t|b[\*i]+tch|a[\*s]+hole|c[\*u]+nt|d[\*i]+ck|p[\*i]+ss|v[\*a]+gina|p[\*e]+nis|s[\*o]+n[\*o]+f[\*a]+[\*b]+[\*i]+tch)\b|\b(schei[\*ß]+e|verdammt|arschloch|arsch|hurensohn|missgeburt|wichser|wixxer|wixer|retard)\b)/gi;
 
-const schema = yup
-  .object({
-    name: yup.string().required(),
-    message: yup
-      .string()
-      .max(200)
-      .required()
-      .test(
-        'no-profanity',
-        'Profanity is not allowed',
-        (value) => !profanityRegex.test(value),
-      ),
-    contactInfoOther: yup.string().optional().max(100),
-  })
-  .required();
-type FormData = yup.InferType<typeof schema>;
+const createValidationSchema = (t: TFunction) => {
+  return yup
+    .object({
+      name: yup
+        .string()
+        .required(t('nameRequired'))
+        .min(2, t('nameMoreThan2'))
+        .test(
+          'no-profanity',
+          t('messageProfanity'),
+          (value) => !profanityRegex.test(value),
+        ),
+      message: yup
+        .string()
+        .required(t('messageRequired'))
+        .max(200)
+        .test(
+          'no-profanity',
+          t('messageProfanity'),
+          (value) => !profanityRegex.test(value),
+        ),
+      contactInfoOther: yup.string().optional().max(100),
+      privacyPolicy: yup.boolean().oneOf([true], t('privacyPolicyRequired')),
+    })
+    .required();
+};
+
+type FormData = yup.InferType<ReturnType<typeof createValidationSchema>>;
 
 export default function ContactForm({
   setIsContactFormOpen,
@@ -89,6 +102,7 @@ export function Form({
   setHideNav,
 }: FormProps) {
   const { t } = useTranslation();
+  const schema = createValidationSchema(t);
   const {
     register,
     handleSubmit,
@@ -96,7 +110,11 @@ export function Form({
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  console.log(errors);
   const onSubmit = (data: FormData) => {
+    console.log(data);
+    return;
     handleSubmitEmail(
       data.name,
       data.message,
@@ -139,20 +157,24 @@ export function Form({
         <label htmlFor="name">{t('name')}</label>
         <input
           type="text"
-          className="bg-transparent border-white/50 border-2 rounded-lg p-2"
+          className={`bg-transparent border-white/50 border-2 rounded-lg p-2 ${
+            errors.name?.message && 'border-red-300'
+          }`}
           id="name"
           {...register('name')}
         />
-        <p>{errors.name?.message}</p>
+        <ErrorMessage>{errors.name?.message}</ErrorMessage>
 
         <label htmlFor="message">{t('message')}</label>
         <input
           type="text"
-          className="!inline-block bg-transparent border-white/50 border-2 rounded-lg p-2 h-[100px]"
+          className={`!inline-block bg-transparent border-white/50 border-2 rounded-lg p-2 h-[100px] ${
+            errors.message?.message && 'border-red-300'
+          }`}
           id="message"
           {...register('message')}
         />
-        <p>{errors.message?.message}</p>
+        <ErrorMessage>{errors.message?.message}</ErrorMessage>
 
         <label htmlFor="contactInfoOther">{t('contact-info-other')}</label>
         <input
@@ -162,7 +184,25 @@ export function Form({
           {...register('contactInfoOther')}
         />
 
-        <Button kind="primary" type="submit">
+        <div className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            className="bg-transparent bg-gray-300 cursor-pointer rounded-xl h-5 w-5 border-white/50 border-2  p-2"
+            id="privacyPolicy"
+            {...register('privacyPolicy')}
+          />
+
+          <label className="sr-only" htmlFor="privacyPolicy">
+            {t('privacy-policy')}
+          </label>
+          <NextLink target="_blank" href="/privacy">
+            {t('privacy-policy')}
+          </NextLink>
+        </div>
+
+        <ErrorMessage>{errors.privacyPolicy?.message}</ErrorMessage>
+
+        <Button className="mt-4" kind="primary" type="submit">
           {t('submit')}
         </Button>
         <Button
@@ -216,3 +256,7 @@ function getFeedbackHTMLTemplate(
     <p>${contactInfo}</p>
   `;
 }
+
+const ErrorMessage = ({ children }: React.PropsWithChildren) => {
+  return <div className="text-red-300">{children}</div>;
+};

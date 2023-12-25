@@ -16,7 +16,7 @@ function App({ Component, pageProps }: AppProps) {
       <Layout>
         <ColorThemeProvider>
           <MemoryCardContextProvider>
-            <Component {...pageProps} />;
+            <Component {...pageProps} />
           </MemoryCardContextProvider>
         </ColorThemeProvider>
       </Layout>
