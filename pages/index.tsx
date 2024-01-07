@@ -48,7 +48,7 @@ export default function Page() {
           image.onload = () => {
             setTimeout(() => {
               resolve(image);
-            }, 1000);
+            }, 10);
           };
           image.onerror = () => reject();
         });
