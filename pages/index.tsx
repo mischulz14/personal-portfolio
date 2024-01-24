@@ -60,7 +60,7 @@ export default function Page() {
   return (
     <>
       {areImagesLoaded ? <Home /> : <Loader />}
-      {areImagesLoaded && browserName === 'Safari' && (
+      {/* {areImagesLoaded && browserName === 'Safari' && (
         <div className="fixed top-0 left-0 w-screen h-screen bg-black/70 flex flex-col justify-center items-center z-[999999999]">
           <div className="bg-black p-8 shadow-whiteBox rounded-lg max-w-sm flex flex-col gap-7 justify-center items-center text-center">
             <h1 className="text-3xl font-bold">{t('using-safari')}</h1>
@@ -75,7 +75,7 @@ export default function Page() {
             </Button>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 }
