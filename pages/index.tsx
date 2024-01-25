@@ -25,7 +25,7 @@ export default function Page() {
   const projectImagePaths = projects.map((project) => project.logoSrc);
   const techStackImagePaths = getTechstackImages().map((image) => image.src);
   const router = useRouter();
-  const routerIncludesTech = router.asPath.includes('.tech');
+  const routerIncludesTech = router.asPath.includes('tech');
 
   useEffect(() => {
     // Here I check if the user is using Safari. If so, I set the browserName state to Safari. This is used to display a warning message to the user that the website is not optimized for Safari.
