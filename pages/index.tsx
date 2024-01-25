@@ -1,8 +1,11 @@
 import { projects } from '@/components/sections/Projects';
 import Button from '@/components/ui/Button';
 import Loader from '@/components/ui/Loader';
+import { Link as LinkIcon } from 'heroicons-react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 import Home from '../components/Home';
@@ -21,6 +24,8 @@ export default function Page() {
   const { t } = useTranslation('common');
   const projectImagePaths = projects.map((project) => project.logoSrc);
   const techStackImagePaths = getTechstackImages().map((image) => image.src);
+  const router = useRouter();
+  const routerIncludesTech = router.asPath.includes('.tech');
 
   useEffect(() => {
     // Here I check if the user is using Safari. If so, I set the browserName state to Safari. This is used to display a warning message to the user that the website is not optimized for Safari.
@@ -59,7 +64,23 @@ export default function Page() {
 
   return (
     <>
-      {areImagesLoaded ? <Home /> : <Loader />}
+      {routerIncludesTech && (
+        <div className="fixed top-0 gap-5 left-0 w-screen h-screen p-10 bg-black/70 flex flex-col justify-center items-center z-[999999999] text-center">
+          <h1 className="text-3xl font-bold">{t('portfolio-moved')}</h1>
+          <Button
+            onClick={() => {
+              setBrowserName(null);
+            }}
+            kind="primary"
+          >
+            <Link className="flex" href="https://michaelschulz.dev">
+              <LinkIcon />
+              {t('check-it')}
+            </Link>
+          </Button>
+        </div>
+      )}
+      {areImagesLoaded && !routerIncludesTech ? <Home /> : <Loader />}
       {/* {areImagesLoaded && browserName === 'Safari' && (
         <div className="fixed top-0 left-0 w-screen h-screen bg-black/70 flex flex-col justify-center items-center z-[999999999]">
           <div className="bg-black p-8 shadow-whiteBox rounded-lg max-w-sm flex flex-col gap-7 justify-center items-center text-center">

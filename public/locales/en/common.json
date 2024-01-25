@@ -79,5 +79,6 @@
   "nameMoreThan2": "Name must be at least 2 characters long",
   "messageRequired": "Message is required",
   "messageProfanity": "Profanity is not allowed",
-  "privacyPolicyRequired": "The privacy policy must be accepted"
+  "privacyPolicyRequired": "The privacy policy must be accepted",
+  "portfolio-moved": "My portfolio has moved to a new domain. Click on the button below to check it out!"
 }

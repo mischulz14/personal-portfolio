@@ -77,5 +77,6 @@
   "nameMoreThan2": "Name muss länger als 2 Zeichen sein",
   "messageRequired": "Nachricht ist erforderlich",
   "messageProfanity": "Nachricht darf keine Schimpfwörter enthalten",
-  "privacyPolicyRequired": "Datenschutzrichtlinie muss angenommen werden"
+  "privacyPolicyRequired": "Datenschutzrichtlinie muss angenommen werden",
+  "portfolio-moved": "Mein Portfolio ist umgezogen! Klicke auf den Butten um es zu sehen."
 }
