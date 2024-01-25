@@ -5,7 +5,6 @@ import { Link as LinkIcon } from 'heroicons-react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 import Home from '../components/Home';
@@ -21,13 +20,20 @@ type BrowserName =
 export default function Page() {
   const [areImagesLoaded, setAreImagesLoaded] = useState(false);
   const [browserName, setBrowserName] = useState<BrowserName | null>(null);
+  const [isOldDomain, setIsOldDomain] = useState(false);
   const { t } = useTranslation('common');
   const projectImagePaths = projects.map((project) => project.logoSrc);
   const techStackImagePaths = getTechstackImages().map((image) => image.src);
-  const router = useRouter();
-  const routerIncludesTech = router.asPath.includes('tech');
 
   useEffect(() => {
+    // check for old domain
+    const currentUrl = window.location.href; // Full URL
+    const domain = window.location.hostname; // Just the domain
+
+    // Now you can check if it's a .tech domain
+    const isTechDomain = domain.includes('.tech');
+    setIsOldDomain(isTechDomain);
+
     // Here I check if the user is using Safari. If so, I set the browserName state to Safari. This is used to display a warning message to the user that the website is not optimized for Safari.
     const userAgent = navigator.userAgent;
     setBrowserName(getBrowserName(userAgent));
@@ -64,7 +70,7 @@ export default function Page() {
 
   return (
     <>
-      {routerIncludesTech && (
+      {isOldDomain && (
         <div className="fixed top-0 gap-5 left-0 w-screen h-screen p-10 bg-black/70 flex flex-col justify-center items-center z-[999999999] text-center">
           <h1 className="text-3xl font-bold">{t('portfolio-moved')}</h1>
           <Button
@@ -80,7 +86,7 @@ export default function Page() {
           </Button>
         </div>
       )}
-      {areImagesLoaded && !routerIncludesTech ? <Home /> : <Loader />}
+      {areImagesLoaded && !isOldDomain ? <Home /> : <Loader />}
       {/* {areImagesLoaded && browserName === 'Safari' && (
         <div className="fixed top-0 left-0 w-screen h-screen bg-black/70 flex flex-col justify-center items-center z-[999999999]">
           <div className="bg-black p-8 shadow-whiteBox rounded-lg max-w-sm flex flex-col gap-7 justify-center items-center text-center">
