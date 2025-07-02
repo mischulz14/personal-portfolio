@@ -37,7 +37,7 @@ export default function ProjectCard({
             width={widthAndHeight}
             height={widthAndHeight}
           />
-          <h2 className="text-lg font-bold  text-white">{title}</h2>
+          <h2 className="text-sm sm:text-lg font-bold  text-white">{title}</h2>
         </div>
         <Link
           target="_blank"
