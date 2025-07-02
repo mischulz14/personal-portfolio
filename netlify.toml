@@ -1,3 +1,3 @@
-# netlify.toml
 [functions]
   external_node_modules = ["core-js"]
+  node_bundler = "esbuild"
