@@ -1,3 +1,4 @@
 [functions]
-  external_node_modules = ["core-js"]
-  node_bundler = "esbuild"
+   node_bundler       = "esbuild"
+  external_node_modules = ["core-js"]         # keep the require() call
+  included_files        = ["node_modules/core-js/**"]
