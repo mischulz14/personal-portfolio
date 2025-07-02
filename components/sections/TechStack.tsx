@@ -9,13 +9,13 @@ export default function TechStack() {
 
   return (
     <div className=" max-w-xl flex flex-col justify-center items-center">
-      <p className="pt-10 pb-10 sm:text-2xl text-xl font-medium text-center -mt-16 sm:mt-0">
+      <p className="pt-8 pb-6 sm:text-2xl text-xl font-medium text-center -mt-16 sm:mt-0">
         <span className="text-effect inline-block pb-[8px] pl-[2px]">
           {t('common:this')}
         </span>{' '}
         {t('common:tech-stack')}
       </p>
-      <div className=" rounded-md sm:flex grid grid-cols-3 flex-wrap items-center justify-center flex-col sm:flex-row gap-8">
+      <div className=" rounded-md sm:flex grid grid-cols-3 flex-wrap items-center justify-center flex-col sm:flex-row gap-6">
         {techStackSvgs.map((tech) => (
           <Link
             href={tech.href}
