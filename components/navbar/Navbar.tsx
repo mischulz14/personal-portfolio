@@ -1,12 +1,9 @@
 import { ColorThemeContext } from '@/context/ColorThemeContextProvider';
 import { motion, useAnimate, useAnimation, useScroll } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
-import Image from 'next/image';
 import NextLink from 'next/link';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { useClickAway } from 'react-use';
 
-import Logo from '../svgs/Logo';
 import ChangeColorThemeDropdown from './ChangeColorThemeDropdown';
 
 export const springTransition = {
@@ -18,12 +15,12 @@ export const springTransition = {
 export default function Navbar({
   setHideScrollDiv,
   hideNav,
+  progressBarPercentage,
 }: {
   setHideScrollDiv: React.Dispatch<React.SetStateAction<boolean>>;
   hideNav: boolean;
+  progressBarPercentage: number;
 }) {
-  const { scrollYProgress } = useScroll();
-
   const { t } = useTranslation();
   const navs = [
     { text: t('common:about-me'), href: '#about' },
@@ -41,7 +38,12 @@ export default function Navbar({
     <>
       <nav
         onClick={() => setHideScrollDiv(true)}
-        className="xl:block fixed hidden w-full z-20 px-20 py-4"
+        className="xl:block fixed hidden w-full z-20 px-20 py-4 transition-all duration-300"
+        style={{
+          backgroundColor: `rgba(255, 255, 255, ${
+            progressBarPercentage > 30 ? 0.08 : 0
+          })`,
+        }}
       >
         {' '}
         {/* z-[9999] is used to make sure that the navbar is always on top of everything else and the links can be clicked */}
@@ -58,21 +60,11 @@ export default function Navbar({
 }
 
 function WebNavbar({ navs }: { navs: { text: string; href: string }[] }) {
-  const colorContext = useContext(ColorThemeContext);
   return (
     <div className="flex gap-10 justify-between items-center px-3">
-      <div className="rounded-full overflow-hidden bg-white/10 p-1 border-[0.5px] border-white/40 shadow-whiteBox">
-        <NextLink href="#/" passHref>
-          <Logo
-            width="50px"
-            height="50px"
-            color={colorContext.colorThemeColor}
-          />
-        </NextLink>
-      </div>
-      <div className="flex gap-10 items-center justify-center">
+      <div className="flex gap-10 items-center justify-center w-full py-1">
         {navs.map((nav) => (
-          <button className="text-effect text-lg pb-1" key={nav.href}>
+          <button className="text-base pb-1 text-effect" key={nav.href}>
             <NextLink href={nav.href} passHref>
               {nav.text}
             </NextLink>
@@ -99,16 +91,7 @@ export function MobileNav({
   };
 
   return (
-    <div className="pt-3 flex w-full relative z-20 justify-between">
-      <div className="rounded-full overflow-hidden bg-white/10 p-1 border-[0.5px] border-white/40 shadow-whiteBox">
-        <NextLink href="#/" passHref>
-          <Logo
-            width="50px"
-            height="50px"
-            color={colorContext.colorThemeColor}
-          />
-        </NextLink>
-      </div>
+    <div className="pt-3 flex w-full relative z-20 justify-end">
       <Hamburger
         isHamburgerOpen={isHamburgerOpen}
         setIsHamburgerOpen={setIsHamburgerOpen}
@@ -122,23 +105,22 @@ export function MobileNav({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.4 }}
-          className="fixed top-24 shadow-whiteBox bg-gray-800 rounded-lg right-10 flex flex-col"
+          className="fixed top-24 shadow-whiteBox bg-gray-800 rounded-lg right-0 w-full h-full"
         >
-          {navs.map((nav) => (
-            <button
-              onClick={handleNavClick}
-              className="text-lg px-8 py-5 hover:bg-white/30 transition-all duration-300 rounded-lg"
-              key={nav.href}
-            >
-              <NextLink href={nav.href} passHref>
-                {nav.text}
-              </NextLink>
-            </button>
-          ))}
-          <ChangeColorThemeDropdown
-            setIsNavOpen={setIsNavOpen}
-            isInWebNav={false}
-          />
+          <div className=" bg-gray-800 rounded-lg right-0 flex flex-col gap-1 w-full justify-center items-center">
+            {navs.map((nav) => (
+              <button
+                onClick={handleNavClick}
+                className="text-base px-8 py-5 hover:bg-white/30 transition-all duration-300 rounded-lg"
+                key={nav.href}
+              >
+                <NextLink href={nav.href} passHref>
+                  {nav.text}
+                </NextLink>
+              </button>
+            ))}
+            <ChangeColorThemeDropdown isInWebNav={false} />
+          </div>
         </motion.div>
       )}
     </div>
@@ -190,6 +172,7 @@ export function Hamburger({
       controlsHalfOpen.start(variants.closed);
       controlsHalfOpenReverse.start(variants.closed);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isNavOpen]);
 
   function handleHamburgerClick() {
@@ -203,21 +186,21 @@ export function Hamburger({
       className="flex flex-col justify-center gap-2 items-center pb-3"
     >
       <motion.div
-        className="w-16 h-2 bg-white/50 rounded-full"
+        className="w-16 h-2 bg-gray-400 rounded-full"
         initial="closed"
         animate={controlsOpen}
         transition={springTransition}
         variants={variants}
       />
       <motion.div
-        className="w-16 h-2 bg-white/50 rounded-full"
+        className="w-16 h-2 bg-gray-400 rounded-full"
         initial="closed"
         animate={controlsHalfOpen}
         transition={springTransition}
         variants={variants}
       />
       <motion.div
-        className="w-16 h-2 bg-white/50 rounded-full"
+        className="w-16 h-2 bg-gray-400 rounded-full"
         initial="closed"
         animate={controlsHalfOpenReverse}
         transition={springTransition}

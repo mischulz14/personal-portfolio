@@ -78,5 +78,7 @@
   "messageRequired": "Nachricht ist erforderlich",
   "messageProfanity": "Nachricht darf keine Schimpfwörter enthalten",
   "privacyPolicyRequired": "Datenschutzrichtlinie muss angenommen werden",
-  "portfolio-moved": "Mein Portfolio ist umgezogen! Klicke auf den Butten um es zu sehen."
+  "portfolio-moved": "Mein Portfolio ist umgezogen! Klicke auf den Butten um es zu sehen.",
+  "realitiq-description": "Realitiq ist ein innovativer Ansatz für Visualisierung, Konfiguration und Datenanalyse im Immobiliensektor. Die Lösung umfasst eine Mobile App, eine Webplattform und einen webbasierten Editor, mit denen Immobilien gescannt, visualisiert und bearbeitet werden können. Darüber hinaus kommen verschiedene KI-Funktionen sowie virtuelle Rundgänge zum Einsatz.",
+  "realitiq-role": "Lead-Entwickler für den Editor von Realitiq. Konzeption der Software-Architektur und Entwicklung der Applikation. Mentoring für Junior Entwickler. Fullstack Entwicklung inklusive Tests und CI."
 }

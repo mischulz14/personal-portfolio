@@ -48,6 +48,23 @@ export default function Projects() {
 
 export const projects = [
   {
+    title: 'Realitiq',
+    description: 'realitiq-description',
+    role: 'realitiq-role',
+    techstack: [
+      'React',
+      'TailwindCSS',
+      'Node',
+      'ThreeJS',
+      'PixiJS',
+      'Typescript',
+      'Git',
+      'Github',
+    ],
+    link: 'https://realitiq.com/',
+    logoSrc: '/realitiq.svg',
+  },
+  {
     title: 'AvaAssist',
     description: 'ava-description',
     role: 'ava-role',
@@ -99,14 +116,14 @@ export const projects = [
   //   link: 'https://cleanly.fly.dev/',
   //   logoSrc: '/cleanly.svg',
   // },
-  {
-    title: 'OrigaME Ecommerce',
-    description: 'origame-description',
-    role: 'origame-role',
-    techstack: ['React', 'NextJS', 'TailwindCSS', 'Node', 'Git', 'Github'],
-    link: 'https://origame-ecommerce.netlify.app/',
-    logoSrc: '/origame.svg',
-  },
+  // {
+  //   title: 'OrigaME Ecommerce',
+  //   description: 'origame-description',
+  //   role: 'origame-role',
+  //   techstack: ['React', 'NextJS', 'TailwindCSS', 'Node', 'Git', 'Github'],
+  //   link: 'https://origame-ecommerce.netlify.app/',
+  //   logoSrc: '/origame.svg',
+  // },
 ];
 
 export function getProjects() {

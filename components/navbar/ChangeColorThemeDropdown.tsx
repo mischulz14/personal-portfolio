@@ -11,10 +11,8 @@ import { useClickAway } from 'react-use';
 
 export default function ChangeColorThemeDropdown({
   isInWebNav = true,
-  setIsNavOpen,
 }: {
   isInWebNav: boolean;
-  setIsNavOpen?: (value: boolean) => void;
 }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropDownRef = useRef<HTMLDivElement>(null);
@@ -26,18 +24,13 @@ export default function ChangeColorThemeDropdown({
     setIsDropdownOpen(false);
   });
 
-  function handleColorClick() {
-    setIsDropdownOpen(false);
-    setIsNavOpen && setIsNavOpen(false);
-  }
-
   return (
     <div className="relative" ref={dropDownRef}>
       <button
         className={
           isInWebNav
-            ? 'text-effect text-lg pb-1'
-            : 'text-lg px-6 py-5 hover:bg-white/30 transition-all duration-300 rounded-lg'
+            ? 'text-effect text-base pb-1'
+            : 'text-base px-6 py-5 hover:bg-white/30 transition-all duration-300 rounded-lg'
         }
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
@@ -46,13 +39,13 @@ export default function ChangeColorThemeDropdown({
       {isDropdownOpen && (
         <>
           <motion.button
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.1, ease: 'linear' }}
             className={
               isInWebNav
-                ? 'fixed top-20 shadow-whiteBox bg-white/20 rounded-lg right-20 flex flex-col z-[99999]'
+                ? 'fixed top-3 shadow-whiteBox bg-white/20 rounded-lg right-3 flex flex-col z-[99999]'
                 : 'hidden'
             }
             onClick={() => setIsDropdownOpen(false)}
@@ -60,19 +53,18 @@ export default function ChangeColorThemeDropdown({
             <XOutline width={25} height={25} />
           </motion.button>
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
             className={
               isInWebNav
-                ? 'fixed top-20 shadow-whiteBox bg-white/20 rounded-lg right-20 flex flex-col'
-                : 'absolute top-18 bg-gray-700 rounded-lg right-0 w-[200px] grid grid-cols-2 gap-3 p-2'
+                ? 'fixed top-3 shadow-whiteBox bg-white/20 rounded-lg right-3 grid grid-cols-2 gap-3 p-2'
+                : 'absolute top-18 bg-gray-700 rounded-lg right-0 w-full grid grid-cols-3 gap-3 p-2'
             }
           >
             {colors.map((color) => (
               <ColorThemeItem
-                onClick={handleColorClick}
                 isInWebNav={isInWebNav}
                 key={color}
                 color={color}
@@ -88,25 +80,22 @@ export default function ChangeColorThemeDropdown({
 export function ColorThemeItem({
   color,
   isInWebNav,
-  onClick,
 }: {
   color: ColorOptions;
   isInWebNav: boolean;
-  onClick: () => void;
 }) {
   const { t } = useTranslation('common');
   const colorContext = useContext(ColorThemeContext);
   const colorCode = colorCodes[color];
   return (
     <button
-      className="px-10 py-2 flex justify-center sm:justify-start items-center rounded-lg gap-2 hover:bg-white/30 hover:scale-110 transition-all duration-300"
+      className="lg:px-10 py-2 flex justify-center sm:justify-start items-center rounded-lg gap-2 hover:bg-white/30 transition-all duration-300"
       onClick={() => {
         colorContext.changeColorTheme(color);
-        onClick();
       }}
       style={{
         backgroundColor: isInWebNav ? '' : colorCode.primary,
-        height: isInWebNav ? 'auto' : '50px',
+        height: isInWebNav ? 'auto' : '30px',
       }}
     >
       <div

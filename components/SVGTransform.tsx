@@ -52,10 +52,11 @@ export default function SVGs(props: { pathIndex: number }) {
     // console.log('animation', animation);
 
     return () => animation.stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [progress, props.pathIndex]);
 
   return (
-    <div className="fixed pl-0 sm:pl-6 pt-1 md:pt-0 left-0 h-screen w-full md:w-40 flex justify-center md:items-center items-start z-[-1]">
+    <div className="fixed pl-0 sm:pl-6 md:pt-0 left-0 h-screen w-full md:w-40 flex justify-center md:items-center items-start z-[-1]">
       <motion.div
         className="border-[0.5px] scale-50 sm:scale-75 lg:scale-110 rounded-full flex items-center justify-center "
         // animate={controls}

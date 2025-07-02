@@ -10,6 +10,7 @@ import PostgresSvg from '@/components/svgs/PostgresSvg';
 import PrismaSvg from '@/components/svgs/PrismaSvg';
 import ReactSvg from '@/components/svgs/ReactSvg';
 import TailwindSvg from '@/components/svgs/TailwindSvg';
+import ThreeJSSvg from '@/components/svgs/ThreeJSSvg';
 import TypescriptSvg from '@/components/svgs/TypescriptSvg';
 import { ColorThemeContext } from '@/context/ColorThemeContextProvider';
 import { useContext } from 'react';
@@ -82,6 +83,11 @@ export default function useSvgList() {
       svgElement: <GitHubSvg color={colorContext.colorThemeColor} />,
       alt: 'Github',
       href: 'https://github.com/mischulz14',
+    },
+    {
+      svgElement: <ThreeJSSvg color={colorContext.colorThemeColor} />,
+      alt: 'ThreeJS',
+      href: 'https://threejs.org/',
     },
   ];
 

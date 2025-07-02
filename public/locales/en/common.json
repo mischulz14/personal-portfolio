@@ -80,5 +80,7 @@
   "messageRequired": "Message is required",
   "messageProfanity": "Profanity is not allowed",
   "privacyPolicyRequired": "The privacy policy must be accepted",
-  "portfolio-moved": "My portfolio has moved to a new domain. Click on the button below to check it out!"
+  "portfolio-moved": "My portfolio has moved to a new domain. Click on the button below to check it out!",
+  "realitiq-description": "Realitiq is an innovative approach to visualization, configuration, and data analysis in the real estate sector. It includes a mobile app, a webplatform and a web-based editor as tools to scan, visualize and edit real estate properties. It also leverages multiple AI features and virtual tours.",
+  "realitiq-role": "Lead Developer for the Realitiq Editor. Responsible for designing the software architecture and developing the application. Mentoring junior developers. Fullstack development including testing and continuous integration (CI)."
 }

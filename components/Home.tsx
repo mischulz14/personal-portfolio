@@ -29,7 +29,11 @@ export default function Home() {
 
   return (
     <div className="overflow-hidden relative">
-      <Navbar hideNav={hideNav} setHideScrollDiv={setHideScrollDiv} />
+      <Navbar
+        progressBarPercentage={progressBarPercentage}
+        hideNav={hideNav}
+        setHideScrollDiv={setHideScrollDiv}
+      />
       <div
         className="relative h-screen w-screen main snap-mandatory snap-y overflow-auto"
         style={{ position: 'sticky', top: 0 }}
