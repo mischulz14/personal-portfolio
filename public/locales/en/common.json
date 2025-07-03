@@ -1,6 +1,6 @@
 {
   "I-am": "I'm Michael",
-  "I-am-description": "I’m a software developer from Vienna, nice to meet you!",
+  "I-am-description": "I'm a software developer from Vienna. How do you want to get to know me?",
   "about-me": "About Me",
   "about-me-description": "I am a fullstack developer working remotely from Vienna. Before embarking on my journey as a software developer I studied nutritional science and genetics and worked as a molecular biologist. I generally love learning new skills, from animation to cooking to playing the piano.",
   "tech-stack": "is my tech stack",
@@ -82,5 +82,8 @@
   "privacyPolicyRequired": "The privacy policy must be accepted",
   "portfolio-moved": "My portfolio has moved to a new domain. Click on the button below to check it out!",
   "realitiq-description": "Realitiq is an innovative approach to visualization, configuration, and data analysis in the real estate sector. It includes a mobile app, a webplatform and a web-based editor as tools to scan, visualize and edit real estate properties. It also leverages multiple AI features and virtual tours.",
-  "realitiq-role": "Lead Developer for the Realitiq Editor. Responsible for designing the software architecture and developing the application. Mentoring junior developers. Fullstack development including testing and continuous integration (CI)."
+  "realitiq-role": "Lead Developer for the Realitiq Editor. Responsible for designing the software architecture and developing the application. Mentoring junior developers. Fullstack development including testing and continuous integration (CI).",
+  "in-a-blog": "In a Blog",
+  "in-a-game": "In a Game",
+  "or-just-scroll": "Or just scroll..."
 }

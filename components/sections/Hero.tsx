@@ -1,8 +1,13 @@
 import { ColorThemeContext } from '@/context/ColorThemeContextProvider';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 import { useContext } from 'react';
 
+import Button from '../ui/Button';
+
 const Hero = () => {
+  const isTouchDevice =
+    (window && 'ontouchstart' in window) || navigator.maxTouchPoints > 0;
   const { t } = useTranslation();
   const colorContext = useContext(ColorThemeContext);
   return (
@@ -10,13 +15,31 @@ const Hero = () => {
       <div>
         <h1
           data-cy="homePageTitle"
-          className="pl-10 sm:pl-0 mb-6 sm:text-3xl text-xl font-semi sm:px-0 title"
+          className="pl-2 sm:pl-0 mb-2 sm:mb-4 sm:text-3xl text-xl font-semi sm:px-0 title text-center"
         >
           <span className="inline-block py-2 text-effect font-bold">Hi,</span>{' '}
           {t('common:I-am')}
         </h1>
-        <p className="text-center sm:text-start sm:text-md text-sm sm:text-lg description pr-2 sm:pr-0">
+        <p className="text-center text-xs sm:text-sm description pr-2 sm:pr-0 max-w-[350px] sm:max-w-none">
           {t('common:I-am-description')}
+        </p>
+        <div className="flex gap-2 justify-center items-center my-4 max-w-[200px] mx-auto">
+          <Button kind="primary" className="text-xs h-12">
+            <Link href="https://blog.michaelschulz.dev/" target="_blank">
+              {t('common:in-a-blog')}
+            </Link>
+          </Button>
+          {!isTouchDevice && (
+            <Button kind="primary" className="text-xs z-20 h-12">
+              <Link href="https://game.michaelschulz.dev" target="_blank">
+                {t('common:in-a-game')}
+              </Link>
+            </Button>
+          )}
+        </div>
+        <p className="text-center block w-full text-xs">
+          {' '}
+          {t('common:or-just-scroll')}
         </p>
       </div>
       <div className="relative h-full w-full">

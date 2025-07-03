@@ -45,7 +45,7 @@ export default function ChangeColorThemeDropdown({
             transition={{ duration: 0.1, ease: 'linear' }}
             className={
               isInWebNav
-                ? 'fixed top-3 shadow-whiteBox bg-white/20 rounded-lg right-3 flex flex-col z-[99999]'
+                ? 'fixed top-20 shadow-whiteBox bg-white/20 rounded-lg right-8 flex flex-col z-[99999]'
                 : 'hidden'
             }
             onClick={() => setIsDropdownOpen(false)}
@@ -59,7 +59,7 @@ export default function ChangeColorThemeDropdown({
             transition={{ duration: 0.4 }}
             className={
               isInWebNav
-                ? 'fixed top-3 shadow-whiteBox bg-white/20 rounded-lg right-3 grid grid-cols-2 gap-3 p-2'
+                ? 'fixed top-20 shadow-whiteBox bg-white/20 rounded-lg right-8 grid grid-cols-2 gap-3 p-2'
                 : 'absolute top-18 bg-gray-700 rounded-lg right-0 w-full grid grid-cols-3 gap-3 p-2'
             }
           >
@@ -89,7 +89,7 @@ export function ColorThemeItem({
   const colorCode = colorCodes[color];
   return (
     <button
-      className="lg:px-10 py-2 flex justify-center sm:justify-start items-center rounded-lg gap-2 hover:bg-white/30 transition-all duration-300"
+      className="xl:px-10 py-2 flex justify-center sm:justify-start items-center rounded-lg gap-2 hover:bg-white/30 transition-all duration-300"
       onClick={() => {
         colorContext.changeColorTheme(color);
       }}
